@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your Mathora mathematics diagnostic.">
+  <title>Your Assessment | Mathora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-page">
+  <header class="site-header assessment-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">
+          <span class="mark-letter">M</span>
+          <span class="mark-root">√</span>
+        </span>
+        <span class="brand-name">MATHORA</span>
+      </a>
+
+      <div class="assessment-header-info">
+        <span id="student-name-header">Student</span>
+        <button id="save-progress-button" class="save-progress-button" type="button">Save progress</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="assessment-shell">
+    <div class="container assessment-layout">
+      <aside class="assessment-sidebar">
+        <div class="assessment-summary">
+          <span class="summary-eyebrow">Your diagnostic</span>
+          <h1 id="assessment-title">Mathematics Diagnostic</h1>
+          <p id="assessment-course"></p>
+        </div>
+
+        <div class="progress-panel">
+          <div class="progress-panel-top">
+            <span>Progress</span>
+            <strong id="progress-count">0 of 12</strong>
+          </div>
+          <div class="progress-track">
+            <span id="progress-bar"></span>
+          </div>
+        </div>
+
+        <nav id="question-navigation" class="question-navigation" aria-label="Question navigation"></nav>
+
+        <div class="sidebar-help">
+          <strong>Show your working</strong>
+          <p>Use either the upload option or the digital whiteboard for each question.</p>
+        </div>
+      </aside>
+
+      <section class="assessment-content">
+        <div class="assessment-intro-card">
+          <div>
+            <span class="step-chip">Step 2</span>
+            <h2>Complete all 12 questions</h2>
+            <p>Your answers and working are saved in this browser as you go.</p>
+          </div>
+          <div class="autosave-status" id="autosave-status">
+            <span></span>
+            Saved
+          </div>
+        </div>
+
+        <form id="assessment-form">
+          <div id="questions-container"></div>
+
+          <div class="submission-card">
+            <div>
+              <span class="section-kicker">Final check</span>
+              <h2>Ready to submit?</h2>
+              <p>
+                Your current version will create a downloadable submission file.
+                We will connect it to online storage in the next stage.
+              </p>
+            </div>
+            <button class="button button-primary" type="submit">
+              Finish assessment
+              <span>→</span>
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <div class="modal" id="whiteboard-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="whiteboard-modal-card" role="dialog" aria-modal="true" aria-labelledby="whiteboard-title">
+      <div class="modal-header">
+        <div>
+          <span class="section-kicker">Digital working</span>
+          <h2 id="whiteboard-title">Question whiteboard</h2>
+        </div>
+        <button class="modal-close" type="button" data-close-modal aria-label="Close whiteboard">×</button>
+      </div>
+
+      <div class="whiteboard-toolbar">
+        <button type="button" data-tool="pen" class="active">Pen</button>
+        <button type="button" data-tool="eraser">Eraser</button>
+        <label>
+          Thickness
+          <input id="brush-size" type="range" min="2" max="18" value="4">
+        </label>
+        <button type="button" id="clear-board">Clear</button>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="whiteboard-canvas" width="1100" height="620"></canvas>
+      </div>
+
+      <div class="modal-actions">
+        <button class="button button-secondary" type="button" data-close-modal>Cancel</button>
+        <button class="button button-primary" type="button" id="save-whiteboard">Save working</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="success-modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="success-modal-card">
+      <span class="success-icon">✓</span>
+      <h2>Assessment prepared</h2>
+      <p>
+        Your answers have been saved in this browser and a submission summary
+        has been downloaded for you.
+      </p>
+      <a class="button button-primary" href="index.html">Return to homepage</a>
+    </div>
+  </div>
+
+  <script src="test.js"></script>
+</body>
+</html>
