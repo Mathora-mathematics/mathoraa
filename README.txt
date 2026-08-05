@@ -1,40 +1,40 @@
-MATHORA VERSION 6.2 — ASSESSMENT JOURNEY
+MATHORA TYPOGRAPHY REPAIR V6.3
 
-REPLACE:
+PROBLEM FIXED
+- Some hero headings were far too large
+- Some body text and labels were too small
+- School and service cards were clipping at page edges
+- AI training labels were hard to read
+- Heading and paragraph spacing was inconsistent
+
+ADD
+- typography-v6.css
+
+REPLACE
+- index.html
 - free-assessment.html
-- register.html
-- instructions.html
-- test.html
+- services.html
+- schools.html
+- contact.html
+- exam-review.html
+- homework-review.html
+- weekly-check.html
+- mock-exams.html
+- tutoring.html
 
-ADD:
-- assessment-v6.css
-
-DO NOT REPLACE:
+DO NOT REPLACE
 - style.css
 - home-v6.css
-- platform.js
-- register.js
-- instructions.js
-- test.js
-- tests.js
-- supabase-config.js
-- any SQL files
+- assessment-v6.css
+- any JavaScript
+- Supabase files
+- SQL files
 
-WHAT CHANGED
-- Premium assessment advertising landing page
-- Clear three-stage registration progress
-- Cleaner course-pathway form
-- Professional instruction start screen
-- Improved timer, progress, questions and working layout
-- Mobile full-screen whiteboard
-- Better multiple-choice styling
-- Better upload and saved-working presentation
-- Existing Supabase and question-bank logic retained
+WHY HTML FILES ARE INCLUDED
+They are unchanged in functionality. They only include one extra stylesheet:
+typography-v6.css
 
-GITHUB
-Upload the five files to the repository root.
-Allow the four HTML files to replace the old versions.
-Commit: Upgrade Mathora assessment journey
+GITHUB COMMIT
+Improve Mathora typography and spacing
 
-SUPABASE
-No changes are needed.
+No Supabase changes required.

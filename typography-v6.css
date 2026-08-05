@@ -1,0 +1,288 @@
+
+/* Mathora V6 Typography Repair
+   Purpose: correct oversized headings, tiny body copy, clipping and uneven spacing
+   across marketing and service pages without changing functionality.
+*/
+
+:root {
+  --type-display-max: 72px;
+  --type-display-min: 42px;
+  --type-section-max: 52px;
+  --type-section-min: 32px;
+  --type-card-title: 20px;
+  --type-body: 16px;
+  --type-small: 13px;
+  --type-label: 11px;
+  --type-line: 1.65;
+}
+
+/* Global readable body scale */
+.site-body,
+.assessment-v6,
+.home-v6 {
+  font-size: var(--type-body);
+}
+
+.site-body p,
+.platform-section p,
+.page-hero p,
+.landing-hero p,
+.service-card p,
+.feature-grid p,
+.course-grid p,
+.school-summary p,
+.service-summary p,
+.contact-context p,
+.footer-grid p,
+.home-v6 p,
+.assessment-v6 p {
+  font-size: clamp(14px, 1.05vw, 16px) !important;
+  line-height: var(--type-line) !important;
+}
+
+/* Prevent hero headings from becoming enormous or clipping */
+.platform-hero h1,
+.landing-hero h1,
+.page-hero h1,
+.home-v6 .home-hero h1,
+.schools-landing h1,
+.service-landing h1,
+.assessment-v6 .assess-landing-hero h1 {
+  font-size: clamp(var(--type-display-min), 5vw, var(--type-display-max)) !important;
+  line-height: 1.04 !important;
+  letter-spacing: -0.045em !important;
+  max-width: 780px;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* Schools page needed a slightly tighter maximum */
+.schools-landing h1 {
+  font-size: clamp(40px, 4.6vw, 66px) !important;
+  max-width: 720px;
+}
+
+/* Section headings */
+.section-heading h2,
+.split-content h2,
+.schools-home h2,
+.ai-section h2,
+.platform-cta-card h2,
+.home-v6 .home-section-heading h2,
+.home-v6 .feature-copy h2,
+.home-v6 .schools-copy h2,
+.assessment-v6 .assess-heading h2,
+.assessment-v6 .assess-split h2 {
+  font-size: clamp(var(--type-section-min), 3.8vw, var(--type-section-max)) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.035em !important;
+  text-wrap: balance;
+}
+
+/* Card titles */
+.service-preview-grid h3,
+.service-card h3,
+.feature-grid h3,
+.course-grid h3,
+.school-mini-grid strong,
+.home-v6 .service-tile h3,
+.home-v6 .journey-card h3,
+.assessment-v6 .assess-process h3 {
+  font-size: clamp(18px, 1.6vw, 22px) !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.015em;
+}
+
+/* Labels and small UI copy should not become microscopic */
+.eyebrow,
+.hero-proof,
+.service-preview-grid span,
+.service-card > span,
+.feature-grid article > span,
+.course-grid span,
+.school-summary > span,
+.service-summary > span,
+.contact-context > span,
+.home-v6 .home-eyebrow,
+.home-v6 .home-kicker,
+.assessment-v6 .assess-kicker,
+.assessment-v6 .assess-eyebrow {
+  font-size: clamp(10px, .8vw, 12px) !important;
+  line-height: 1.4 !important;
+}
+
+.footer-grid a,
+.footer-grid strong,
+.footer-brand p,
+.footer-bottom,
+.school-mini-grid span,
+.ai-topic-grid span,
+.contact-points span,
+.contact-points b {
+  font-size: clamp(12px, .9vw, 14px) !important;
+  line-height: 1.55 !important;
+}
+
+/* Fix cards being cut off at screen edges */
+.feature-grid,
+.service-grid,
+.service-preview-grid,
+.course-grid {
+  width: 100%;
+  overflow: visible;
+}
+
+.feature-grid article,
+.service-card,
+.service-preview-grid a,
+.course-grid article {
+  min-width: 0;
+}
+
+/* Cards need enough room but should not become huge */
+.feature-grid article,
+.service-card,
+.service-preview-grid a,
+.course-grid article {
+  padding: clamp(22px, 2.3vw, 32px) !important;
+}
+
+.feature-grid h3,
+.service-card h3,
+.service-preview-grid h3,
+.course-grid h3 {
+  margin-top: clamp(24px, 3vw, 42px) !important;
+}
+
+/* Better content width and section spacing */
+.platform-section {
+  padding: clamp(72px, 8vw, 105px) 0 !important;
+}
+
+.page-hero {
+  padding: clamp(72px, 7vw, 100px) 0 clamp(52px, 5vw, 72px) !important;
+}
+
+.landing-grid,
+.platform-hero-grid {
+  gap: clamp(40px, 5vw, 72px) !important;
+}
+
+/* Keep school/AI dark sections balanced */
+.schools-landing .landing-grid,
+.ai-section .split-content,
+.schools-home-grid {
+  align-items: center;
+}
+
+.ai-topic-grid span {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 14px 16px !important;
+}
+
+/* Improve line length */
+.platform-hero p,
+.landing-hero p,
+.page-hero p,
+.section-heading p,
+.split-content > div > p,
+.home-v6 .home-hero-copy,
+.assessment-v6 .assess-landing-hero p {
+  max-width: 720px;
+}
+
+/* Buttons should remain readable */
+.button,
+.home-button,
+.assess-button,
+.contact-submit,
+.setup-actions button,
+.instruction-actions button {
+  font-size: clamp(13px, 1vw, 15px) !important;
+}
+
+/* Desktop card grid margins */
+@media (min-width: 1100px) {
+  .feature-grid.four {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .service-grid,
+  .service-preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Tablet */
+@media (max-width: 980px) {
+  .platform-hero h1,
+  .landing-hero h1,
+  .page-hero h1,
+  .home-v6 .home-hero h1,
+  .schools-landing h1 {
+    font-size: clamp(42px, 7vw, 60px) !important;
+  }
+
+  .feature-grid.four,
+  .course-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+  .platform-hero h1,
+  .landing-hero h1,
+  .page-hero h1,
+  .home-v6 .home-hero h1,
+  .schools-landing h1,
+  .assessment-v6 .assess-landing-hero h1 {
+    font-size: 40px !important;
+    line-height: 1.06 !important;
+  }
+
+  .section-heading h2,
+  .split-content h2,
+  .schools-home h2,
+  .ai-section h2,
+  .platform-cta-card h2,
+  .home-v6 .home-section-heading h2,
+  .home-v6 .feature-copy h2,
+  .home-v6 .schools-copy h2 {
+    font-size: 32px !important;
+    line-height: 1.12 !important;
+  }
+
+  .feature-grid.four,
+  .feature-grid.three,
+  .service-grid,
+  .service-preview-grid,
+  .course-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .platform-section {
+    padding: 66px 0 !important;
+  }
+
+  .page-hero {
+    padding: 62px 0 45px !important;
+  }
+
+  .feature-grid article,
+  .service-card,
+  .service-preview-grid a,
+  .course-grid article {
+    padding: 22px !important;
+  }
+
+  .feature-grid h3,
+  .service-card h3,
+  .service-preview-grid h3,
+  .course-grid h3 {
+    margin-top: 24px !important;
+  }
+}
