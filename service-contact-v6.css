@@ -1,0 +1,235 @@
+
+/* Mathora V6 service and contact repair */
+
+/* Service tabs */
+.service-tabs {
+  position: sticky;
+  top: 76px;
+  z-index: 80;
+  border-bottom: 1px solid #dde5ee;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(16px);
+}
+
+.service-tabs-inner {
+  width: min(1180px, calc(100% - 40px));
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-inline: auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.service-tabs-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.service-tabs a {
+  flex: none;
+  padding: 9px 13px;
+  border-radius: 9px;
+  color: #66758a;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.service-tabs a:hover {
+  color: #07111f;
+  background: #f1f4f8;
+}
+
+.service-tabs a.active {
+  color: #fff;
+  background: #07111f;
+}
+
+/* Correct the service summary layout */
+.service-summary {
+  min-width: 0;
+}
+
+.service-summary > div {
+  display: grid !important;
+  grid-template-columns: 38px minmax(0, 1fr) !important;
+  gap: 14px !important;
+  align-items: start !important;
+  padding: 18px 0 !important;
+}
+
+.service-summary > div > span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: rgba(111,167,255,.12);
+  color: #9fc4ff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px !important;
+}
+
+.service-summary > div > p {
+  display: grid !important;
+  gap: 5px !important;
+  margin: 0 !important;
+  min-width: 0;
+}
+
+.service-summary > div > p > strong {
+  display: block !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  line-height: 1.3 !important;
+}
+
+.service-summary > div > p > small {
+  display: block !important;
+  color: #a8b6c6 !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  white-space: normal !important;
+}
+
+/* Service hero proportions */
+.service-landing .landing-grid {
+  grid-template-columns: minmax(0, .95fr) minmax(360px, .75fr) !important;
+  align-items: center !important;
+}
+
+.service-landing h1 {
+  max-width: 760px !important;
+}
+
+.service-landing p {
+  max-width: 670px !important;
+}
+
+/* Contact page containment */
+.contact-page {
+  overflow: hidden;
+}
+
+.contact-layout {
+  width: min(1180px, calc(100% - 40px));
+  grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr) !important;
+  gap: 28px !important;
+  margin-inline: auto;
+}
+
+.contact-context,
+.contact-form-card {
+  min-width: 0;
+  width: 100%;
+}
+
+.contact-context {
+  left: auto !important;
+  transform: none !important;
+  padding: 30px !important;
+}
+
+.contact-context h2 {
+  font-size: clamp(28px, 2.8vw, 40px) !important;
+  line-height: 1.15 !important;
+  overflow-wrap: anywhere;
+}
+
+.contact-context > p {
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+}
+
+.contact-points b {
+  display: block;
+  font-size: 14px !important;
+}
+
+.contact-points span {
+  display: block;
+  margin-top: 3px;
+  font-size: 13px !important;
+}
+
+.contact-form-card {
+  overflow: hidden;
+}
+
+.contact-form-card .form-grid {
+  min-width: 0;
+}
+
+.contact-form-card .field,
+.contact-form-card input,
+.contact-form-card select,
+.contact-form-card textarea {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Prevent page-wide horizontal overflow */
+.site-body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 980px) {
+  .service-tabs {
+    top: 76px;
+  }
+
+  .service-landing .landing-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .service-summary {
+    max-width: 720px;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-context {
+    position: static !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .service-tabs {
+    top: 70px;
+  }
+
+  .service-tabs-inner {
+    width: calc(100% - 24px);
+    min-height: 52px;
+  }
+
+  .service-tabs a {
+    padding: 8px 11px;
+    font-size: 12px;
+  }
+
+  .service-summary > div {
+    grid-template-columns: 34px minmax(0,1fr) !important;
+    gap: 11px !important;
+  }
+
+  .service-summary > div > p > strong {
+    font-size: 15px !important;
+  }
+
+  .service-summary > div > p > small {
+    font-size: 12px !important;
+  }
+
+  .contact-layout {
+    width: calc(100% - 24px);
+  }
+
+  .contact-context,
+  .contact-form-card {
+    padding: 22px 16px !important;
+  }
+}
