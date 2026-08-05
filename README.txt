@@ -1,35 +1,37 @@
-MATHORA V4 — PREMIUM MATHEMATICS DIAGNOSTIC
+MATHORA HOMEPAGE REPAIR — V6.1.1
 
-NEW
-- Assessment instruction page before the timer starts
-- Clear upload-versus-whiteboard guidance
-- Professional KaTeX maths rendering
-- New mathematical logo
-- Mobile-first layouts
-- Progressive difficulty labels
-- Calculator guidance on every question
-- Stronger final three questions in every one of the 16 pathways
-- More cross-topic and exam-style reasoning
-- Existing Supabase submission workflow retained
+WHY THIS PATCH EXISTS
+The V6.1 design-system stylesheet replaced the stable V5 stylesheet before the
+existing pages were rebuilt. This caused the homepage layout to collapse.
 
-UPLOAD
-index.html
-register.html
-instructions.html
-test.html
-style.css
-script.js
-register.js
-instructions.js
-tests.js
-test.js
-supabase-config.js
+REPLACE ONLY THESE FILES
+- style.css
+- platform.js
+- index.html
 
-FLOW
-Homepage → Registration → Instructions → Timed Assessment → Supabase
+ADD THIS NEW FILE
+- home-v6.css
 
-DATABASE
-No new SQL is required if the v2 database upgrade has already been run.
+DO NOT REPLACE
+- contact.js
+- supabase-config.js
+- tests.js
+- test.js
+- register.js
+- instructions.js
+- any SQL files
 
-The questions are original. They are informed by official specifications and specimen-paper
-structures, but are not copied from copyrighted past papers.
+WHAT THIS DOES
+1. Restores the stable shared V5 stylesheet for all existing pages.
+2. Gives the homepage its own isolated premium stylesheet.
+3. Rebuilds the homepage so its layout matches the CSS.
+4. Prevents future homepage work from breaking assessment or contact pages.
+
+GITHUB STEPS
+1. Extract this ZIP.
+2. Upload the four files to the root of the repository.
+3. Allow index.html, style.css and platform.js to replace the old files.
+4. Commit: Repair and redesign Mathora homepage
+5. Test in an Incognito window.
+
+No Supabase changes are needed.
