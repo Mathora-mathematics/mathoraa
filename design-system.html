@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mathora Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="./assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css?v=6.1">
+<script src="./platform.js?v=6.1" defer></script>
+</head>
+<body>
+<header class="site-header"><div class="container navigation">
+<a class="brand" href="./design-system.html"><img class="logo-symbol" src="./assets/brand/mathora-logo.svg" alt=""><span class="brand-name">MATHORA</span></a>
+<button class="menu-toggle" type="button"><span></span><span></span><span></span></button>
+<nav class="nav-links"><a href="#brand">Brand</a><a href="#type">Typography</a><a href="#components">Components</a><a href="#forms">Forms</a><a href="#report">Reports</a></nav>
+</div></header>
+
+<main>
+<section class="ds-hero"><div class="container ds-hero-grid">
+<div><span class="hero-proof"><i></i> VERSION 6.1</span><h1 class="display-1">One visual system.<br>Every Mathora product.</h1><p class="lead">The design system defines how Mathora looks, feels and communicates across the website, assessments, dashboards, reports and future school products.</p>
+<div class="component-row" style="margin-top:2rem"><a class="button button-light" href="#components">Explore components →</a><a class="button button-outline" style="color:#fff;border-color:rgba(255,255,255,.18)" href="./index.html">Return to platform</a></div></div>
+<div class="ds-preview"><div class="ds-preview-card"><span class="badge">QUESTION 08</span><h3>Which method gives the correct next step?</h3><div class="ds-preview-options"><span>A&nbsp; Expand first</span><span class="active">B&nbsp; Factorise first</span><span>C&nbsp; Differentiate</span><span>D&nbsp; Estimate</span></div><div class="badge badge-success" style="margin-top:1rem">✓ Working attached</div></div></div>
+</div></section>
+
+<section class="platform-section" id="brand"><div class="container">
+<div class="section-heading"><span class="eyebrow">BRAND FOUNDATION</span><h2>A restrained palette built for screens and documents.</h2><p>Midnight navy creates authority, royal blue provides focus, and pale neutral surfaces keep mathematical content clear.</p></div>
+<div class="swatch-grid">
+<div class="swatch"><div class="swatch-color" style="--swatch:#07111F"></div><div class="swatch-copy"><strong>Midnight</strong><code>#07111F</code></div></div>
+<div class="swatch"><div class="swatch-color" style="--swatch:#296DFF"></div><div class="swatch-copy"><strong>Mathora Blue</strong><code>#296DFF</code></div></div>
+<div class="swatch"><div class="swatch-color" style="--swatch:#F6F8FB"></div><div class="swatch-copy"><strong>Canvas</strong><code>#F6F8FB</code></div></div>
+<div class="swatch"><div class="swatch-color" style="--swatch:#0F9F6E"></div><div class="swatch-copy"><strong>Progress</strong><code>#0F9F6E</code></div></div>
+</div>
+</div></section>
+
+<section class="platform-section alt" id="type"><div class="container">
+<div class="section-heading"><span class="eyebrow">TYPOGRAPHY</span><h2>Clear hierarchy without decorative noise.</h2></div>
+<div class="type-demo"><div class="type-meta"><span>Display / Manrope</span><span>64–88 px</span></div><div class="display-2">Understand mathematics properly.</div></div>
+<div class="type-demo"><div class="type-meta"><span>Heading / Manrope</span><span>32–48 px</span></div><div class="heading-1">Evidence before intervention.</div></div>
+<div class="type-demo"><div class="type-meta"><span>Body / DM Sans</span><span>16–18 px</span></div><p class="lead">Mathematical content should be easy to scan, calm to read and visually separate from supporting instructions.</p></div>
+<div class="type-demo"><div class="type-meta"><span>Data / JetBrains Mono</span><span>Metrics and timers</span></div><div style="font-family:var(--m-font-mono);font-size:2rem">18:42&nbsp;&nbsp; 8/12&nbsp;&nbsp; 74%</div></div>
+</div></section>
+
+<section class="platform-section" id="components"><div class="container">
+<div class="section-heading"><span class="eyebrow">COMPONENT LIBRARY</span><h2>Reusable building blocks for every future page.</h2></div>
+<div class="component-stack">
+<div class="component-row"><a class="button button-primary">Primary action →</a><a class="button button-dark">Dark action</a><a class="button button-outline">Outline action</a><a class="button button-ghost">Text action →</a></div>
+<div class="component-row"><span class="badge">ASSESSMENT</span><span class="badge badge-success">✓ COMPLETE</span><span class="badge badge-neutral">FOUNDATION</span></div>
+<div class="component-grid">
+<article class="card card-pad"><span class="card-number">01</span><h3 class="card-title">Assessment</h3><p class="card-copy">A standard information card for product and service pages.</p></article>
+<article class="card card-pad card-soft"><span class="card-number">02</span><h3 class="card-title">Academic review</h3><p class="card-copy">A softer surface for secondary or supporting content.</p></article>
+<article class="card card-pad card-dark"><span class="card-number" style="color:#9fc4ff">03</span><h3 class="card-title">School partnership</h3><p class="card-copy" style="color:#b5c1ce">A dark card for premium and institutional services.</p></article>
+</div>
+<div class="component-grid">
+<div class="metric"><div class="metric-label">Overall readiness</div><div class="metric-value">74%</div><div class="metric-trend">↑ 8% since last review</div></div>
+<div class="metric"><div class="metric-label">Questions completed</div><div class="metric-value">12/12</div><div class="metric-trend">All working attached</div></div>
+<div class="metric"><div class="metric-label">Average question time</div><div class="metric-value">02:48</div><div class="metric-trend">Within target range</div></div>
+</div>
+</div></div></section>
+
+<section class="platform-section alt" id="forms"><div class="container">
+<div class="section-heading"><span class="eyebrow">FORMS</span><h2>One form language across registration and consultation.</h2></div>
+<div class="card card-pad">
+<div class="form-grid">
+<label class="field">Full name<input placeholder="Student or parent name"></label>
+<label class="field">Email<input type="email" placeholder="name@example.com"></label>
+<label class="field">Qualification<select><option>GCSE Mathematics</option><option>IGCSE Mathematics</option><option>IB Mathematics</option></select></label>
+<label class="field">Target grade<input placeholder="Grade 8"></label>
+<label class="field full">Message<textarea rows="5" placeholder="Tell us what support is required"></textarea></label>
+</div>
+<div class="component-row" style="margin-top:1.25rem"><button class="button button-primary">Send enquiry →</button><button class="button button-outline">Cancel</button></div>
+</div>
+</div></section>
+
+<section class="platform-section" id="report"><div class="container">
+<div class="section-heading"><span class="eyebrow">REPORT LANGUAGE</span><h2>Professional enough for parents and schools.</h2></div>
+<div class="report-preview">
+<div class="report-top"><div class="report-brand"><img src="./assets/brand/mathora-logo.svg" alt=""><strong>MATHORA</strong></div><div class="report-meta">DIAGNOSTIC SUMMARY · SAMPLE</div></div>
+<div class="report-score"><div><strong>8/12</strong><span class="metric-label">overall result</span></div><p>Secure core algebra. Multi-step geometry and conditional probability should be prioritised before the next full mock assessment.</p></div>
+<div class="report-bars">
+<div><span>Number</span><div class="progress"><i style="--value:88%"></i></div><strong>88%</strong></div>
+<div><span>Algebra</span><div class="progress"><i style="--value:82%"></i></div><strong>82%</strong></div>
+<div><span>Geometry</span><div class="progress"><i style="--value:48%"></i></div><strong>48%</strong></div>
+<div><span>Probability</span><div class="progress"><i style="--value:56%"></i></div><strong>56%</strong></div>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer class="platform-footer"><div class="container footer-grid">
+<div class="footer-brand"><a class="brand" href="./index.html"><img class="logo-symbol" src="./assets/brand/mathora-logo.svg" alt=""><span class="brand-name">MATHORA</span></a><p>Mathematics diagnostics, academic support and professional development.</p></div>
+<div><strong>Design system</strong><a href="#brand">Brand</a><a href="#type">Typography</a><a href="#components">Components</a></div>
+<div><strong>Products</strong><a href="./free-assessment.html">Mathora Assess</a><a href="./services.html">Mathora Learn</a><a href="./schools.html">Mathora Schools</a></div>
+<div><strong>Platform</strong><a href="./index.html">Website</a><a href="./contact.html">Contact</a></div>
+</div><div class="container footer-bottom"><span>Mathora Design System v6.1</span><span>Built with free web technologies</span></div></footer>
+</body></html>

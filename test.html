@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timed Diagnostic | Mathora</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+  <link rel="stylesheet" href="./style.css?v=4.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="./supabase-config.js?v=4.0" defer></script>
+  <script src="./tests.js?v=4.0" defer></script>
+  <script src="./test.js?v=4.0" defer></script>
+</head>
+
+<body class="assessment-body">
+  <header class="assessment-topbar">
+    <div class="container assessment-topbar-inner">
+      <a class="brand" href="./index.html">
+        <svg class="logo-symbol" viewBox="0 0 48 48" aria-hidden="true">
+<rect x="1" y="1" width="46" height="46" rx="13" fill="currentColor" opacity=".08"/>
+<path d="M10 35V14l10 14 9-14v21" fill="none" stroke="currentColor" stroke-width="4.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M29 35h10" fill="none" stroke="currentColor" stroke-width="4.1" stroke-linecap="round"/>
+<circle cx="39" cy="13" r="2.7" fill="currentColor"/>
+</svg><span class="brand-name">MATHORA</span>
+      </a>
+
+      <div class="assessment-meta">
+        <span id="studentName">Student</span>
+        <div class="timer" id="timer">--:--</div>
+        <button id="saveProgress">Save progress</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="assessment-shell">
+    <div class="container assessment-layout">
+      <aside class="assessment-sidebar">
+        <div class="assessment-profile">
+          <span>TIMED DIAGNOSTIC</span>
+          <h1 id="testTitle">Loading test…</h1>
+          <p id="testPath"></p>
+        </div>
+
+        <div class="progress-card">
+          <div>
+            <span>Completed</span>
+            <strong id="progressText">0 / 12</strong>
+          </div>
+          <div class="progress-track"><i id="progressBar"></i></div>
+        </div>
+
+        <nav id="questionNav" class="question-nav"></nav>
+
+        <div class="working-rule">
+          <span>REQUIRED</span>
+          <strong>Every answer needs working</strong>
+          <p>Save a whiteboard or upload a handwritten solution before submission.</p>
+        </div>
+      </aside>
+
+      <section class="assessment-main">
+        <div class="assessment-intro">
+          <div>
+            <span>ASSESSMENT IN PROGRESS</span>
+            <h2>Choose the answer. Show the method.</h2>
+            <p>The timer records total time and time spent on each question.</p>
+          </div>
+
+          <div id="saveState" class="save-state">● Saved</div>
+        </div>
+
+        <form id="testForm">
+          <div id="questions"></div>
+
+          <div class="submit-panel">
+            <div>
+              <span>FINAL CHECK</span>
+              <h2>Submit the completed diagnostic</h2>
+              <p>All 12 answers and all 12 worked solutions are required.</p>
+            </div>
+
+            <button id="submitButton" type="submit">
+              Submit assessment
+              <i>→</i>
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <div id="boardModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+
+    <div class="board-dialog">
+      <div class="board-head">
+        <div>
+          <span>DIGITAL WORKING</span>
+          <h2 id="boardTitle">Question whiteboard</h2>
+        </div>
+        <button data-close>×</button>
+      </div>
+
+      <div class="board-tools">
+        <button data-tool="pen" class="active">Pen</button>
+        <button data-tool="eraser">Eraser</button>
+        <button id="undoBoard">Undo</button>
+
+        <label>
+          Thickness
+          <input id="brushSize" type="range" min="2" max="18" value="4">
+        </label>
+
+        <button id="clearBoard">Clear</button>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="boardCanvas" width="1200" height="650"></canvas>
+      </div>
+
+      <div class="board-actions">
+        <button data-close>Cancel</button>
+        <button id="saveBoard">Save working</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="successModal" class="modal">
+    <div class="modal-backdrop"></div>
+
+    <div class="success-dialog">
+      <b>✓</b>
+      <h2>Assessment submitted</h2>
+      <p id="successText"></p>
+      <a href="./index.html">Return to Mathora</a>
+    </div>
+  </div>
+</body>
+</html>
