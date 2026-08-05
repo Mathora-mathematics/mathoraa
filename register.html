@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Start your Mathora mathematics diagnostic assessment.">
+  <title>Start Assessment | Mathora</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="form-page">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Mathora home">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="mark-letter">M</span>
+          <span class="mark-root">√</span>
+        </span>
+        <span class="brand-name">MATHORA</span>
+      </a>
+
+      <a class="button button-secondary compact-button" href="index.html">Back to home</a>
+    </div>
+  </header>
+
+  <main class="registration-main">
+    <div class="container registration-layout">
+      <section class="registration-intro">
+        <p class="section-kicker">Begin your diagnostic</p>
+        <h1>Tell us a little about your course.</h1>
+        <p>
+          Your answers help us direct you to the most relevant mathematics assessment.
+          It should take less than two minutes.
+        </p>
+
+        <div class="registration-points">
+          <div>
+            <span>01</span>
+            <p>Your details remain linked to your assessment</p>
+          </div>
+          <div>
+            <span>02</span>
+            <p>You can upload handwritten workings during the test</p>
+          </div>
+          <div>
+            <span>03</span>
+            <p>Your work will be reviewed manually</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-card">
+        <div class="form-card-heading">
+          <span class="form-step">Step 1 of 2</span>
+          <h2>Student details</h2>
+          <p>Complete all required fields before continuing.</p>
+        </div>
+
+        <form id="student-form" novalidate>
+          <div class="form-grid">
+            <div class="field-group full-width">
+              <label for="full-name">Full name <span>*</span></label>
+              <input id="full-name" name="fullName" type="text" autocomplete="name" required placeholder="Enter your full name">
+              <small class="error-message"></small>
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email address <span>*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required placeholder="name@example.com">
+              <small class="error-message"></small>
+            </div>
+
+            <div class="field-group">
+              <label for="phone">WhatsApp number <span>*</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+44 7000 000000">
+              <small class="field-hint">Include the country code</small>
+              <small class="error-message"></small>
+            </div>
+
+            <div class="field-group">
+              <label for="year-group">School year or age <span>*</span></label>
+              <input id="year-group" name="yearGroup" type="text" required placeholder="For example: Year 11 or age 16">
+              <small class="error-message"></small>
+            </div>
+
+            <div class="field-group">
+              <label for="qualification">Qualification <span>*</span></label>
+              <select id="qualification" name="qualification" required>
+                <option value="">Select qualification</option>
+                <option value="GCSE">GCSE Mathematics</option>
+                <option value="IGCSE">IGCSE Mathematics</option>
+                <option value="IB">IB Mathematics</option>
+              </select>
+              <small class="error-message"></small>
+            </div>
+
+            <div class="field-group">
+              <label for="exam-board">Exam board <span>*</span></label>
+              <select id="exam-board" name="examBoard" required disabled>
+                <option value="">Select qualification first</option>
+              </select>
+              <small class="error-message"></small>
+            </div>
+
+            <div class="field-group">
+              <label for="level">Tier or level <span>*</span></label>
+              <select id="level" name="level" required disabled>
+                <option value="">Select qualification first</option>
+              </select>
+              <small class="error-message"></small>
+            </div>
+
+            <div class="field-group">
+              <label for="current-grade">Current grade</label>
+              <input id="current-grade" name="currentGrade" type="text" placeholder="Optional">
+            </div>
+
+            <div class="field-group">
+              <label for="target-grade">Target grade <span>*</span></label>
+              <input id="target-grade" name="targetGrade" type="text" required placeholder="For example: Grade 7 or 6">
+              <small class="error-message"></small>
+            </div>
+
+            <div class="field-group full-width">
+              <label for="notes">Anything we should know?</label>
+              <textarea id="notes" name="notes" rows="4" placeholder="For example: topics you find difficult or an upcoming exam"></textarea>
+            </div>
+
+            <div class="field-group full-width consent-field">
+              <label class="checkbox-label" for="consent">
+                <input id="consent" name="consent" type="checkbox" required>
+                <span>
+                  I agree that Mathora may store these details and my submitted work
+                  for the purpose of reviewing this assessment. <strong>*</strong>
+                </span>
+              </label>
+              <small class="error-message"></small>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <p><span>*</span> Required fields</p>
+            <button class="button button-primary submit-button" type="submit">
+              Continue to assessment
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="register.js"></script>
+</body>
+</html>
