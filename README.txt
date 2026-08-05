@@ -1,22 +1,40 @@
-MATHORA HOMEPAGE FIX V6.1.2
+MATHORA VERSION 6.2 — ASSESSMENT JOURNEY
 
-REPLACE ONLY:
-- index.html
-- home-v6.css
+REPLACE:
+- free-assessment.html
+- register.html
+- instructions.html
+- test.html
 
-FIXES:
-- Logo is now embedded directly in index.html, so it cannot fail because of a missing asset path.
-- Favicon is embedded directly too.
-- KaTeX is loaded on the homepage, so mathematical notation renders properly.
-- Hero headline size and spacing are corrected to prevent clipping.
-- Mobile headline and mathematics sizes are corrected.
+ADD:
+- assessment-v6.css
 
 DO NOT REPLACE:
 - style.css
+- home-v6.css
 - platform.js
-- assessment files
-- Supabase files
-- contact files
+- register.js
+- instructions.js
+- test.js
+- tests.js
+- supabase-config.js
+- any SQL files
 
-Commit message:
-Fix Mathora homepage logo and mathematics
+WHAT CHANGED
+- Premium assessment advertising landing page
+- Clear three-stage registration progress
+- Cleaner course-pathway form
+- Professional instruction start screen
+- Improved timer, progress, questions and working layout
+- Mobile full-screen whiteboard
+- Better multiple-choice styling
+- Better upload and saved-working presentation
+- Existing Supabase and question-bank logic retained
+
+GITHUB
+Upload the five files to the repository root.
+Allow the four HTML files to replace the old versions.
+Commit: Upgrade Mathora assessment journey
+
+SUPABASE
+No changes are needed.
