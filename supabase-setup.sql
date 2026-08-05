@@ -1,0 +1,2 @@
+-- Keep your original supabase-setup.sql from the previous package if you already imported it.
+-- No action required.
