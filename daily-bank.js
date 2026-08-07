@@ -7,17 +7,31 @@ No backend required.
 */
 (() => {
   const TRACKS = {
-    "gcse-foundation": {label:"GCSE Foundation", boards:["AQA focus","Pearson focus","OCR focus","WJEC focus"]},
-    "gcse-higher": {label:"GCSE Higher", boards:["AQA focus","Pearson focus","OCR focus","WJEC focus"]},
-    "igcse-core": {label:"Cambridge IGCSE Core", boards:["Cambridge International focus"]},
-    "igcse-extended": {label:"IGCSE Extended / Higher", boards:["Cambridge International focus","Pearson International GCSE focus"]},
-    "as-maths": {label:"AS Mathematics", boards:["AQA focus","Pearson focus","OCR A focus"]},
-    "a-level": {label:"A Level Mathematics", boards:["AQA focus","Pearson focus","OCR A focus"]},
-    "further-maths": {label:"A Level Further Mathematics", boards:["AQA core focus","Pearson Core Pure focus","OCR A core focus"]},
-    "ib-aa-sl": {label:"IB Mathematics AA SL", boards:["IB Analysis & Approaches"]},
-    "ib-aa-hl": {label:"IB Mathematics AA HL", boards:["IB Analysis & Approaches"]},
-    "ib-ai-sl": {label:"IB Mathematics AI SL", boards:["IB Applications & Interpretation"]},
-    "ib-ai-hl": {label:"IB Mathematics AI HL", boards:["IB Applications & Interpretation"]}
+    "gcse-aqa-f": {label:"AQA GCSE Foundation", family:"gf", board:"AQA"},
+    "gcse-aqa-h": {label:"AQA GCSE Higher", family:"gh", board:"AQA"},
+    "gcse-edexcel-f": {label:"Pearson Edexcel GCSE Foundation", family:"gf", board:"Pearson Edexcel"},
+    "gcse-edexcel-h": {label:"Pearson Edexcel GCSE Higher", family:"gh", board:"Pearson Edexcel"},
+    "gcse-ocr-f": {label:"OCR GCSE Foundation", family:"gf", board:"OCR"},
+    "gcse-ocr-h": {label:"OCR GCSE Higher", family:"gh", board:"OCR"},
+    "gcse-eduqas-f": {label:"WJEC Eduqas GCSE Foundation", family:"gf", board:"WJEC Eduqas"},
+    "gcse-eduqas-h": {label:"WJEC Eduqas GCSE Higher", family:"gh", board:"WJEC Eduqas"},
+    "igcse-pearson-f": {label:"Pearson International GCSE Foundation", family:"igf", board:"Pearson International GCSE"},
+    "igcse-pearson-h": {label:"Pearson International GCSE Higher", family:"igh", board:"Pearson International GCSE"},
+    "igcse-cambridge-core": {label:"Cambridge IGCSE Core", family:"igf", board:"Cambridge International"},
+    "igcse-cambridge-extended": {label:"Cambridge IGCSE Extended", family:"igh", board:"Cambridge International"},
+    "as-aqa": {label:"AQA AS Mathematics", family:"as", board:"AQA"},
+    "as-edexcel": {label:"Pearson Edexcel AS Mathematics", family:"as", board:"Pearson Edexcel"},
+    "as-ocr": {label:"OCR A AS Mathematics", family:"as", board:"OCR A"},
+    "alevel-aqa": {label:"AQA A Level Mathematics", family:"al", board:"AQA"},
+    "alevel-edexcel": {label:"Pearson Edexcel A Level Mathematics", family:"al", board:"Pearson Edexcel"},
+    "alevel-ocr": {label:"OCR A A Level Mathematics", family:"al", board:"OCR A"},
+    "fm-aqa": {label:"AQA Further Mathematics — Compulsory Core", family:"fm", board:"AQA"},
+    "fm-edexcel": {label:"Pearson Further Mathematics — Core Pure", family:"fm", board:"Pearson Edexcel"},
+    "fm-ocr": {label:"OCR A Further Mathematics — Pure Core", family:"fm", board:"OCR A"},
+    "ib-aa-sl": {label:"IB Mathematics AA SL", family:"aa-sl", board:"IB"},
+    "ib-aa-hl": {label:"IB Mathematics AA HL", family:"aa-hl", board:"IB"},
+    "ib-ai-sl": {label:"IB Mathematics AI SL", family:"ai-sl", board:"IB"},
+    "ib-ai-hl": {label:"IB Mathematics AI HL", family:"ai-hl", board:"IB"}
   };
 
   const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
@@ -30,7 +44,9 @@ No backend required.
   const cleanAnswer=s=>String(s).replace(/\\\(|\\\)|\\text\{[^}]*\}|\\,/g,"").replace(/\s+/g,"").toLowerCase();
 
   function C({topic,difficulty,time=3,question,context="",hint,answer,accepted=[],steps,mistake,tip}){
-    return {topic,difficulty,time,question,context,hint,answer,accepted:[answer,...accepted],steps,mistake,tip};
+    const worked=[...steps];
+    worked.push(`Final answer: ${answer}`);
+    return {topic,difficulty,time,question,context,hint,answer,accepted:[answer,...accepted],steps:worked,mistake,tip,specArea:topic};
   }
 
   // GCSE FOUNDATION: 12 rotating families
@@ -457,30 +473,62 @@ No backend required.
     return fmGen(index+73);
   }
 
+
+  // International GCSE higher wrapper: avoid formal binomial-distribution notation.
+  function ighGen(index){
+    const mod=((index%14)+14)%14;
+    if(mod===8) return gh(index+1); // use polygon reasoning instead of formal B(n,p) notation
+    return gh(index);
+  }
+
+  // IB AA SL: analytic/algebraic course content only — no mechanics.
+  function aaSlGen(index){
+    const {t,cycle}=dayParts(index,10);
+    switch(t){
+      case 0:{const a=2+(cycle%4),x=2+(cycle%6),c=1+(cycle%5),ans=a*x*x+c;return C({topic:"Functions",difficulty:2,time:3,question:`Given \\(f(x)=${a}x^2+${c}\\), find \\(f(${x})\\).`,hint:"Substitute the value of x carefully.",answer:String(ans),steps:[`\\(f(${x})=${a}(${x})^2+${c}\\)`,`\\(=${ans}\\)`],mistake:"Not squaring the input before multiplying.",tip:"Use brackets when substituting, especially for negative values."});}
+      case 1:{const u=5+(cycle%8),diff=2+(cycle%5),n=8+(cycle%7),ans=u+(n-1)*diff;return C({topic:"Sequences and series",difficulty:2,time:3,question:`An arithmetic sequence has first term \\(${u}\\) and common difference \\(${diff}\\). Find \\(u_{${n}}\\).`,hint:"Use \\(u_n=a+(n-1)d\\).",answer:String(ans),steps:[`\\(u_{${n}}=${u}+(${n}-1)(${diff})\\)`,`\\(=${ans}\\)`],mistake:"Using n differences instead of n−1.",tip:"Count the jumps from term 1 to term n."});}
+      case 2:{const base=[2,3,4,5][cycle%4],pow=2+(cycle%4),rhs=base**pow;return C({topic:"Exponentials and logarithms",difficulty:2,time:3,question:`Solve \\(${base}^x=${rhs}\\).`,hint:"Write both sides using the same base.",answer:String(pow),steps:[`\\(${rhs}=${base}^{${pow}}\\)`,`So \\(x=${pow}\\).`],mistake:"Multiplying the base and exponent.",tip:"Check for a common base before reaching for logarithms."});}
+      case 3:{const A=20+5*(cycle%10),B=180-A;return C({topic:"Trigonometry",difficulty:3,time:3,question:`Solve \\(\\sin x=\\sin ${A}^\\circ\\) for \\(0\\le x\\le180^\\circ\\).`,hint:"Sine is positive in quadrants I and II.",answer:`${A}°, ${B}°`,accepted:[`${A},${B}`],steps:[`First solution: \\(x=${A}^\\circ\\).`,`Second solution: \\(x=180-${A}=${B}^\\circ\\).`],mistake:"Giving only the principal solution.",tip:"Always use the stated interval to check for additional solutions."});}
+      case 4:{const a=2+(cycle%5),b=3+(cycle%4),x=1+(cycle%5),grad=3*a*x*x-b;return C({topic:"Differentiation",difficulty:3,time:4,question:`Find the gradient of \\(y=${a}x^3-${b}x\\) at \\(x=${x}\\).`,hint:"Differentiate first, then substitute.",answer:String(grad),steps:[`\\(dy/dx=${3*a}x^2-${b}\\)`,`At \\(x=${x}\\), gradient \\(=${grad}\\).`],mistake:"Substituting before differentiating.",tip:"Gradient at a point means derivative evaluated at that x-value."});}
+      case 5:{const upper=2+(cycle%4),a=1+(cycle%3),b=1+(cycle%4),ans=a*upper**3/3+b*upper;return C({topic:"Integration",difficulty:3,time:4,question:`Evaluate \\(\\int_0^{${upper}}(${a}x^2+${b})\\,dx\\).`,hint:"Find an antiderivative, then apply both limits.",answer:f(ans),steps:[`Antiderivative: \\(\\frac{${a}}3x^3+${b}x\\).`,`At \\(x=${upper}\\): \\(${f(ans)}\\); at 0: 0.`,`Integral \\(=${f(ans)}\\).`],mistake:"Forgetting to divide by the new power.",tip:"Differentiate your antiderivative mentally as a check."});}
+      case 6:{const n=5+(cycle%4),r=2,p=.2+.1*(cycle%4);return C({topic:"Binomial distribution",difficulty:4,time:4,question:`For \\(X\\sim B(${n},${p})\\), write an expression for \\(P(X=2)\\).`,hint:"Use the binomial probability formula.",answer:`C(${n},2)(${p})²(${f(1-p)})^${n-2}`,steps:[`\\(P(X=2)=\\binom{${n}}2(${p})^2(${f(1-p)})^{${n-2}}\\).`],mistake:"Omitting the combination factor or swapping success/failure powers.",tip:"The two exponents must add to n."});}
+      case 7:{const mean=50+5*(cycle%8),sd=3+(cycle%5),x=mean+2*sd;return C({topic:"Statistics",difficulty:4,time:3,question:`A normal distribution has mean \\(${mean}\\) and standard deviation \\(${sd}\\). Find the z-score for \\(x=${x}\\).`,hint:"Use \\(z=(x-\\mu)/\\sigma\\).",answer:"2",steps:[`\\(z=\\frac{${x}-${mean}}{${sd}}=2\\).`],mistake:"Using the variance as the denominator.",tip:"Standardisation uses standard deviation, not variance."});}
+      case 8:{const r=4+(cycle%7),theta=.5+.1*(cycle%8),area=.5*r*r*theta;return C({topic:"Radians",difficulty:4,time:4,question:`A sector has radius \\(${r}\\) and angle \\(${f(theta)}\\) radians. Find its area.`,hint:"Use \\(A=\\frac12r^2\\theta\\).",answer:f(area),steps:[`\\(A=\\frac12(${r})^2(${f(theta)})\\)`,`\\(A=${f(area)}\\).`],mistake:"Using arc length \\(r\\theta\\) instead of sector area.",tip:"In radian formulae, no degree conversion is needed."});}
+      default:{const mean=20+2*(cycle%8),scale=2+(cycle%4),shift=1+(cycle%5);return C({topic:"Statistics",difficulty:4,time:3,question:`A data set has mean \\(${mean}\\) and standard deviation 4. Every value is transformed by \\(y=${scale}x+${shift}\\). Find the new standard deviation.`,hint:"A translation does not change spread; multiplication does.",answer:String(4*scale),steps:[`Multiplication by ${scale} multiplies standard deviation by ${scale}.`,`Adding ${shift} does not change standard deviation.`,`New SD \\(=${4*scale}\\).`],mistake:"Adding the shift to the standard deviation.",tip:"For y=ax+b, standard deviation is multiplied by |a| only."});}
+    }
+  }
+
+  // IB AA HL: extends AA SL with proof, complex numbers, vectors and deeper calculus.
+  function aaHlGen(index){
+    const {t,cycle}=dayParts(index,12);
+    if(t<6) return aaSlGen(index+83);
+    switch(t){
+      case 6:{const exp=10+(cycle%30),vals=["1","i","-1","-i"],ans=vals[exp%4];return C({topic:"Complex numbers",difficulty:3,time:3,question:`Evaluate \\(i^{${exp}}\\).`,hint:"Powers of i repeat every four.",answer:ans,steps:[`\\(${exp}\\equiv${exp%4}\\pmod4\\).`,`Therefore the value is ${ans}.`],mistake:"Ignoring the four-term cycle.",tip:"Reduce large powers of i modulo 4 immediately."});}
+      case 7:return C({topic:"Proof by induction",difficulty:4,time:4,question:"After establishing a base case, what is the correct induction step?",hint:"Assume the result for k.",answer:"Assume true for n=k and prove for n=k+1",steps:["Assume the proposition P(k) is true.","Using that assumption, prove P(k+1).","Together with the base case, the statement follows for all required integers."],mistake:"Checking only one more numerical case.",tip:"Induction is an implication from k to k+1, not repeated testing."});
+      case 8:{const x=1+(cycle%5),y=2+(cycle%5),z=2+(cycle%4),dot=x*2+y*(-1)+z*3;return C({topic:"Vectors",difficulty:4,time:4,question:`Find \\(( ${x},${y},${z})\\cdot(2,-1,3)\\).`,hint:"Multiply corresponding components and add.",answer:String(dot),steps:[`\\(${x}(2)+${y}(-1)+${z}(3)=${dot}\\).`],mistake:"Multiplying vector magnitudes instead of components.",tip:"Dot product is a scalar."});}
+      case 9:{const k=2+(cycle%4),y0=2+(cycle%5);return C({topic:"Differential equations",difficulty:5,time:5,question:`Solve \\(dy/dx=${k}y\\), given \\(y(0)=${y0}\\).`,hint:"Separate variables.",answer:`y=${y0}e^(${k}x)`,steps:[`\\(dy/y=${k}dx\\).`,`\\(\\ln y=${k}x+C\\), so \\(y=Ae^{${k}x}\\).`,`Using \\(y(0)=${y0}\\), \\(A=${y0}\\).`],mistake:"Using a linear function for exponential growth.",tip:"A rate proportional to the quantity itself produces an exponential model."});}
+      case 10:{const a=1+(cycle%4);return C({topic:"Implicit differentiation",difficulty:5,time:5,question:`For \\(x^2+xy+y^2=${7+a}\\), find \\(dy/dx\\).`,hint:"Use the product rule on xy.",answer:"-(2x+y)/(x+2y)",steps:[`Differentiate: \\(2x+x\\,y'+y+2yy'=0\\).`,`Collect y': \\((x+2y)y'=-(2x+y)\\).`,`\\(y'=-\\frac{2x+y}{x+2y}\\).`],mistake:"Differentiating xy as x+y.",tip:"Whenever x and y are multiplied, xy needs the product rule."});}
+      default:{const n=2+(cycle%4),coef=(1)/mathFactorial(n);return C({topic:"Series",difficulty:5,time:4,question:`Find the coefficient of \\(x^${n}\\) in the Maclaurin series of \\(e^x\\).`,hint:"Use \\(e^x=\\sum x^r/r!\\).",answer:f(coef),steps:[`The \\(x^${n}\\) term is \\(x^${n}/${n}!\\).`,`Coefficient \\(=1/${mathFactorial(n)}=${f(coef)}\\).`],mistake:"Forgetting the factorial denominator.",tip:"Memorise the standard Maclaurin series and identify the required term directly."});}
+    }
+  }
+
   function build(track,index){
     index=((index%730)+730)%730;
+    const meta=TRACKS[track] || TRACKS["gcse-aqa-h"];
+    const seed=(index + Object.keys(TRACKS).indexOf(track)*37) % 730;
     let challenge;
-    if(track==="gcse-foundation") challenge=gf(index);
-    else if(track==="gcse-higher") challenge=gh(index);
-    else if(track==="igcse-core") challenge=gf(index+151);
-    else if(track==="igcse-extended") challenge=gh(index+223);
-    else if(track==="as-maths") challenge=asGen(index);
-    else if(track==="a-level") challenge=alGen(index);
-    else if(track==="further-maths") challenge=fmGen(index);
-    else if(track==="ib-aa-sl") challenge=asGen(index+109);
-    else if(track==="ib-aa-hl") challenge=aaHl(index);
-    else if(track==="ib-ai-sl") challenge=aiSl(index);
-    else challenge=aiHl(index);
-
-    const meta=TRACKS[track] || TRACKS["gcse-higher"];
-    return {
-      ...challenge,
-      track,
-      trackLabel:meta.label,
-      board:meta.boards[index%meta.boards.length],
-      index,
-      challengeNumber:index+1
-    };
+    if(meta.family==="gf") challenge=gf(seed);
+    else if(meta.family==="gh") challenge=gh(seed);
+    else if(meta.family==="igf") challenge=gf(seed+151);
+    else if(meta.family==="igh") challenge=ighGen(seed+223);
+    else if(meta.family==="as") challenge=asGen(seed);
+    else if(meta.family==="al") challenge=alGen(seed);
+    else if(meta.family==="fm") challenge=fmGen(seed);
+    else if(meta.family==="aa-sl") challenge=aaSlGen(seed+109);
+    else if(meta.family==="aa-hl") challenge=aaHlGen(seed);
+    else if(meta.family==="ai-sl") challenge=aiSl(seed);
+    else challenge=aiHl(seed);
+    return {...challenge,track,trackLabel:meta.label,board:meta.board,index,challengeNumber:index+1};
   }
 
   function answerMatches(challenge,input){

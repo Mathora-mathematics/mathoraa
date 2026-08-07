@@ -22,9 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const rotationIndex = ((dayIndex % 730) + 730) % 730;
 
   const params = new URLSearchParams(location.search);
-  const queryTrack = params.get("track");
-  const savedTrack = localStorage.getItem(TRACK_KEY);
-  let track = bank.tracks[queryTrack] ? queryTrack : (bank.tracks[savedTrack] ? savedTrack : "gcse-higher");
+  const LEGACY_TRACKS = {
+    "gcse-foundation":"gcse-aqa-f",
+    "gcse-higher":"gcse-aqa-h",
+    "igcse-core":"igcse-cambridge-core",
+    "igcse-extended":"igcse-cambridge-extended",
+    "as-maths":"as-aqa",
+    "a-level":"alevel-aqa",
+    "further-maths":"fm-aqa"
+  };
+  const migrateTrack = value => LEGACY_TRACKS[value] || value;
+  const queryTrack = migrateTrack(params.get("track"));
+  const savedTrack = migrateTrack(localStorage.getItem(TRACK_KEY));
+  let track = bank.tracks[queryTrack] ? queryTrack : (bank.tracks[savedTrack] ? savedTrack : "gcse-aqa-h");
+  localStorage.setItem(TRACK_KEY, track);
   let displayIndex = params.has("q") ? Math.max(0, Math.min(729, Number(params.get("q"))-1 || rotationIndex)) : rotationIndex;
 
   select.value = track;

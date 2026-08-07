@@ -16,7 +16,7 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
-<script src="./daily-bank.js?v=8.0" defer></script>
+<script src="./daily-bank.js?v=9.0" defer></script>
 <script src="./daily.js?v=8.0" defer></script>
 </head>
 
@@ -51,7 +51,7 @@
       <div class="daily-mini-stats">
         <div><strong id="heroStreak">0</strong><span>day streak</span></div>
         <div><strong>730</strong><span>day rotation</span></div>
-        <div><strong>11</strong><span>pathways</span></div>
+        <div><strong>25</strong><span>pathways</span></div>
       </div>
     </div>
 
@@ -60,17 +60,20 @@
       <h2>What are you studying?</h2>
       <p>We’ll remember this choice on this device.</p>
       <select id="trackSelect" aria-label="Choose mathematics pathway">
-        <option value="gcse-foundation">GCSE Foundation</option>
-        <option value="gcse-higher">GCSE Higher</option>
-        <option value="igcse-core">Cambridge IGCSE Core</option>
-        <option value="igcse-extended">IGCSE Extended / Higher</option>
-        <option value="as-maths">AS Mathematics</option>
-        <option value="a-level">A Level Mathematics</option>
-        <option value="further-maths">A Level Further Mathematics</option>
-        <option value="ib-aa-sl">IB Mathematics AA SL</option>
-        <option value="ib-aa-hl">IB Mathematics AA HL</option>
-        <option value="ib-ai-sl">IB Mathematics AI SL</option>
-        <option value="ib-ai-hl">IB Mathematics AI HL</option>
+        <optgroup label="GCSE Mathematics">
+          <option value="gcse-aqa-f">AQA GCSE Foundation</option><option value="gcse-aqa-h">AQA GCSE Higher</option>
+          <option value="gcse-edexcel-f">Pearson Edexcel GCSE Foundation</option><option value="gcse-edexcel-h">Pearson Edexcel GCSE Higher</option>
+          <option value="gcse-ocr-f">OCR GCSE Foundation</option><option value="gcse-ocr-h">OCR GCSE Higher</option>
+          <option value="gcse-eduqas-f">WJEC Eduqas GCSE Foundation</option><option value="gcse-eduqas-h">WJEC Eduqas GCSE Higher</option>
+        </optgroup>
+        <optgroup label="International GCSE">
+          <option value="igcse-pearson-f">Pearson International GCSE Foundation</option><option value="igcse-pearson-h">Pearson International GCSE Higher</option>
+          <option value="igcse-cambridge-core">Cambridge IGCSE Core</option><option value="igcse-cambridge-extended">Cambridge IGCSE Extended</option>
+        </optgroup>
+        <optgroup label="AS Mathematics"><option value="as-aqa">AQA AS Mathematics</option><option value="as-edexcel">Pearson Edexcel AS Mathematics</option><option value="as-ocr">OCR A AS Mathematics</option></optgroup>
+        <optgroup label="A Level Mathematics"><option value="alevel-aqa">AQA A Level Mathematics</option><option value="alevel-edexcel">Pearson Edexcel A Level Mathematics</option><option value="alevel-ocr">OCR A A Level Mathematics</option></optgroup>
+        <optgroup label="Further Mathematics — Core"><option value="fm-aqa">AQA Further Maths — Compulsory Core</option><option value="fm-edexcel">Pearson Further Maths — Core Pure</option><option value="fm-ocr">OCR A Further Maths — Pure Core</option></optgroup>
+        <optgroup label="IB Mathematics"><option value="ib-aa-sl">IB Mathematics AA SL</option><option value="ib-aa-hl">IB Mathematics AA HL</option><option value="ib-ai-sl">IB Mathematics AI SL</option><option value="ib-ai-hl">IB Mathematics AI HL</option></optgroup>
       </select>
       <small id="rememberedText">Your selection is saved automatically.</small>
     </div>

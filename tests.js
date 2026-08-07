@@ -13,8 +13,57 @@ Design rules:
   const T = {};
   const L = ["A","B","C","D"];
 
-  function q(topic,text,options,correct,marks,difficulty,style,calculator="Either") {
-    return {topic,text,options,correct,marks,difficulty,style,calculator};
+  const SPEC_MAP = {
+    "Number":"Number","Number and percentage":"Number / Ratio","Fractions":"Number","Ratio":"Ratio / Proportion",
+    "Rates of change":"Ratio / Rates of change","Geometry":"Geometry","Area":"Geometry","Probability":"Probability",
+    "Statistics":"Statistics","Linear graphs":"Algebra / Graphs","Reverse percentage":"Ratio / Proportion",
+    "Algebra and geometry":"Algebra / Geometry","Surds":"Number / Algebra","Quadratics":"Algebra","Functions":"Algebra / Functions",
+    "Sequences":"Algebra / Sequences","Trigonometry":"Geometry / Trigonometry","Circle theorems":"Geometry","Vectors":"Geometry / Vectors",
+    "Iteration":"Algebra / Numerical methods","Vectors and ratio":"Geometry / Vectors","Circle geometry and Pythagoras":"Geometry",
+    "Graphs and algebra":"Algebra / Graphs","Standard form":"Number","Coordinate geometry":"Algebra / Graphs","Mensuration":"Geometry",
+    "Similarity":"Geometry","Algebraic modelling":"Algebra / Modelling","Indices":"Number / Algebra","Geometry":"Geometry",
+    "Algebra":"Algebra","Transformations":"Geometry","Percentage change":"Number / Ratio","Algebraic reasoning":"Algebra / Reasoning",
+    "Proof":"Proof","Algebra and functions":"Algebra / Functions","Sequences and series":"Sequences / Series",
+    "Exponentials and logarithms":"Exponentials / Logs","Differentiation":"Calculus / Differentiation","Integration":"Calculus / Integration",
+    "Kinematics":"Mechanics / Kinematics","Forces":"Mechanics / Forces","Functions and calculus":"Calculus / Functions",
+    "Numerical methods":"Numerical methods","Hypothesis testing":"Statistics / Hypothesis testing","Mechanics":"Mechanics",
+    "Calculus and modelling":"Calculus / Modelling","Complex numbers":"Complex numbers","Matrices":"Matrices","Roots of polynomials":"Further algebra",
+    "Further algebra":"Further algebra","Polar coordinates":"Polar coordinates","Hyperbolic functions":"Hyperbolic functions",
+    "Differential equations":"Differential equations","Maclaurin series":"Series / Further calculus","Complex roots":"Complex numbers / Roots",
+    "Logarithms":"Number / Algebra","Implicit differentiation":"Calculus / Differentiation","Probability modelling":"Probability / Modelling",
+    "Financial mathematics":"Number / Modelling","Linear modelling":"Functions / Modelling","Regression":"Statistics / Modelling",
+    "Normal distribution":"Statistics / Distribution","Markov chains":"Matrices / Modelling","Graph theory":"Graph theory",
+    "Matrices and transformations":"Matrices","Probability distributions":"Probability distributions","Networks and optimisation":"Graph theory / Networks"
+  };
+
+  const METHOD_HINT = {
+    "Percentages":"convert the percentage to a multiplier or useful fraction, then apply it to the original amount",
+    "Fractions":"use a common denominator before combining fractions",
+    "Ratio":"find the total number of ratio parts before calculating each share",
+    "Linear equations":"use inverse operations while keeping both sides balanced",
+    "Quadratics":"factorise or use an appropriate quadratic method, then check both roots",
+    "Functions":"substitute carefully in the stated order and use brackets for negative inputs",
+    "Probability":"identify the correct sample space and use multiplication only when events are independent",
+    "Statistics":"state the statistic or distribution method before calculating",
+    "Trigonometry":"identify the correct trigonometric relationship from the given information",
+    "Vectors":"operate on corresponding components and preserve direction",
+    "Differentiation":"differentiate first, then apply any point or stationary condition",
+    "Integration":"find the antiderivative carefully and apply limits or the constant of integration where required",
+    "Hypothesis testing":"compare the p-value or critical region with the stated significance level",
+    "Matrices":"use the correct matrix operation, determinant or characteristic equation",
+    "Complex numbers":"use modulus-argument or powers of i systematically",
+    "Financial mathematics":"use the correct compound multiplier over the stated number of periods"
+  };
+
+  function q(topic,text,options,correct,marks,difficulty,style,calculator="Either",solution="",misconception="",specArea="") {
+    const answer = options[L.indexOf(correct)];
+    const method = METHOD_HINT[topic] || "show a complete mathematical method, justify the key step, and check that the result matches the context";
+    return {
+      topic,text,options,correct,marks,difficulty,style,calculator,
+      solution: solution || `Correct response: ${answer}. A strong solution should ${method}.`,
+      misconception: misconception || "Selecting an answer without showing enough working to demonstrate the underlying method.",
+      specArea: specArea || SPEC_MAP[topic] || topic
+    };
   }
 
   function add(key,title,durationMinutes,questions,instructions="Questions increase in mathematical demand. Select one answer and show all essential working.") {
@@ -139,13 +188,13 @@ Design rules:
     return qs;
   }
 
-  ["AQA","Pearson Edexcel","OCR","WJEC"].forEach((board,i)=>{
+  ["AQA","Pearson Edexcel","OCR","WJEC Eduqas"].forEach((board,i)=>{
     add(`GCSE|${board}|Foundation`,`${board} GCSE Mathematics Foundation Diagnostic`,45,gcseFoundation(i));
     add(`GCSE|${board}|Higher`,`${board} GCSE Mathematics Higher Diagnostic`,55,gcseHigher(i));
   });
 
   // ---------- IGCSE ----------
-  add("IGCSE|Pearson Edexcel|Foundation","Pearson Edexcel International GCSE Mathematics A Foundation Diagnostic",50,[
+  add("IGCSE|Pearson Edexcel International GCSE|Foundation","Pearson Edexcel International GCSE Mathematics A Foundation Diagnostic",50,[
     q("Number","Write \\(0.375\\) as a fraction in simplest form.",["\\(\\frac38\\)","\\(\\frac58\\)","\\(\\frac3{10}\\)","\\(\\frac{37}{100}\\)"],"A",1,1,"Fluency","Non-calculator"),
     q("Ratio","Divide \\(168\\) in the ratio \\(4:3\\).",["96 and 72","84 and 84","112 and 56","72 and 96"],"A",2,1,"Fluency","Non-calculator"),
     q("Standard form","Write \\(0.00056\\) in standard form.",["\\(5.6\\times10^{-4}\\)","\\(5.6\\times10^{-3}\\)","\\(56\\times10^{-4}\\)","\\(0.56\\times10^{-3}\\)"],"A",2,2,"Application","Non-calculator"),
@@ -157,10 +206,10 @@ Design rules:
     q("Similarity","Two similar shapes have length scale factor \\(3:5\\). The smaller area is \\(54\\text{ cm}^2\\). Find the larger area.",["150 cm²","90 cm²","250 cm²","162 cm²"],"A",4,4,"Reasoning","Calculator"),
     q("Trigonometry","In triangle \\(ABC\\), \\(a=7\\), \\(b=9\\), \\(C=60^\\circ\\). Find \\(c^2\\).",["67","130","46","109"],"A",4,5,"Multi-step","Calculator"),
     q("Functions","\\(f(x)=3x-4\\), \\(g(x)=x^2\\). Find \\(g(f(2))\\).",["4","2","8","16"],"A",4,5,"Cross-topic"),
-    q("Algebraic modelling","A rectangle has area \\(60\\text{ cm}^2\\). Its length is \\(x+2\\), width \\(x-3\\). Find positive \\(x\\).",["8","10","6","12"],"A",5,5,"Cross-topic","Calculator")
+    q("Algebraic modelling","A rectangle has area \\(60\\text{ cm}^2\\). Its length is \\(x+2\\) and width is \\(x-3\\). Which equation must \\(x\\) satisfy?",["\\(x^2-x-66=0\\)","\\(x^2-x-60=0\\)","\\(x^2+5x-66=0\\)","\\(x^2-5x-60=0\\)"],"A",5,5,"Cross-topic","Calculator")
   ]);
 
-  add("IGCSE|Pearson Edexcel|Higher","Pearson Edexcel International GCSE Mathematics A Higher Diagnostic",60,[
+  add("IGCSE|Pearson Edexcel International GCSE|Higher","Pearson Edexcel International GCSE Mathematics A Higher Diagnostic",60,[
     q("Indices","Simplify \\(\\frac{x^7y^3}{x^2y}\\).",["\\(x^5y^2\\)","\\(x^9y^4\\)","\\(x^5y^3\\)","\\(x^3y^2\\)"],"A",1,1,"Fluency","Non-calculator"),
     q("Surds","Rationalise \\(\\frac6{\\sqrt3}\\).",["\\(2\\sqrt3\\)","\\(6\\sqrt3\\)","\\(3\\sqrt2\\)","\\(\\sqrt3\\)"],"A",2,1,"Fluency","Non-calculator"),
     q("Quadratics","Solve \\(2x^2-5x-3=0\\).",["\\(x=3\\text{ or }x=-\\frac12\\)","\\(x=-3\\text{ or }x=\\frac12\\)","\\(x=1\\text{ or }x=-3\\)","\\(x=\\frac32\\text{ or }x=-1\\)"],"A",2,2,"Application","Non-calculator"),
@@ -168,7 +217,7 @@ Design rules:
     q("Sequences","The \\(n\\)th term is \\(n^2+2n\\). Find the 8th term.",["80","64","96","72"],"A",2,3,"Application","Non-calculator"),
     q("Vectors","\\(\\overrightarrow{AB}=\\mathbf p\\), \\(\\overrightarrow{BC}=\\mathbf q\\). Find \\(\\overrightarrow{AC}\\).",["\\(\\mathbf p+\\mathbf q\\)","\\(\\mathbf q-\\mathbf p\\)","\\(\\mathbf p-\\mathbf q\\)","\\(2\\mathbf p+\\mathbf q\\)"],"A",2,3,"Reasoning"),
     q("Trigonometry","A triangle has sides 8 and 11 with included angle \\(50^\\circ\\). Which expression gives its area?",["\\(\\frac12(8)(11)\\sin50^\\circ\\)","\\(8\\cdot11\\cos50^\\circ\\)","\\(\\frac12(8)(11)\\cos50^\\circ\\)","\\(8\\cdot11\\sin50^\\circ\\)"],"A",3,4,"Reasoning","Calculator"),
-    q("Probability","For \\(X\\sim B(5,0.4)\\), which expression gives \\(P(X=2)\\)?",["\\(\\binom52(0.4)^2(0.6)^3\\)","\\(\\binom52(0.4)^3(0.6)^2\\)","\\(5(0.4)^2(0.6)^3\\)","\\((0.4)^2(0.6)^3\\)"],"A",3,4,"Reasoning","Calculator"),
+    q("Probability","A fair coin is tossed four times. Find the probability of exactly three heads.",["\\(\\frac14\\)","\\(\\frac1{16}\\)","\\(\\frac38\\)","\\(\\frac12\\)"],"A",3,4,"Reasoning","Non-calculator"),
     q("Geometry","The interior angle of a regular polygon is \\(156^\\circ\\). How many sides?",["15","12","18","24"],"A",4,4,"Reasoning","Calculator"),
     q("Algebra","The equation \\(x^2+kx+9=0\\) has equal roots. Find possible \\(k\\).",["\\(k=\\pm6\\)","\\(k=6\\)","\\(k=\\pm3\\)","\\(k=\\pm18\\)"],"A",4,5,"Multi-step","Non-calculator"),
     q("Similarity and volume","Two similar solids have surface-area ratio \\(9:25\\). The smaller volume is \\(216\\text{ cm}^3\\). Find larger volume.",["\\(1000\\text{ cm}^3\\)","\\(600\\text{ cm}^3\\)","\\(360\\text{ cm}^3\\)","\\(1666\\frac23\\text{ cm}^3\\)"],"A",5,5,"Cross-topic","Calculator"),
@@ -202,7 +251,7 @@ Design rules:
     q("Geometry","The exterior angle of a regular polygon is \\(24^\\circ\\). Find the number of sides.",["15","12","18","24"],"A",4,4,"Reasoning","Non-calculator"),
     q("Algebra","Solve simultaneously \\(y=x+1\\) and \\(y=x^2-5x+7\\). How many real intersection points?",["2","1","0","3"],"A",4,5,"Multi-step","Calculator"),
     q("Similarity","Two similar solids have volume ratio \\(64:125\\). Find corresponding length ratio.",["4:5","8:5","16:25","64:125"],"A",4,5,"Cross-topic","Non-calculator"),
-    q("Algebraic reasoning","The line \\(y=kx+5\\) is tangent to \\(y=x^2+2x+9\\). Find possible \\(k\\).",["\\(-2\\pm4\\)","\\(2\\pm4\\)","\\(2\\pm2\\sqrt5\\)","\\(-2\\pm2\\sqrt5\\)"],"A",5,5,"Cross-topic","Non-calculator")
+    q("Algebraic reasoning","The line \\(y=kx+5\\) is tangent to \\(y=x^2+2x+9\\). Find possible \\(k\\).",["\\(k=6\\text{ or }k=-2\\)","\\(k=2\\text{ or }k=-6\\)","\\(k=4\\text{ or }k=0\\)","\\(k=2\\pm2\\sqrt5\\)"],"A",5,5,"Cross-topic","Non-calculator")
   ]);
 
   // ---------- AS Mathematics ----------
@@ -254,9 +303,9 @@ Design rules:
     q("Maclaurin series","Coefficient of \\(x^3\\) in \\(e^{2x}\\) is:",["\\(\\frac43\\)","8","\\(\\frac83\\)","2"],"A",4,5,"Reasoning","Non-calculator"),
     q("Complex numbers and geometry","The roots of \\(z^6=64\\) lie on a circle with radius:",["2","4","8","64"],"A",5,5,"Cross-topic","Non-calculator")
   ];
-  add("A Level Further Mathematics|AQA|Core","AQA A Level Further Mathematics Core Diagnostic",80,FM.map(x=>({...x})),"Core/compulsory Further Mathematics only; optional applied content is not tested.");
+  add("A Level Further Mathematics|AQA|Compulsory Core","AQA A Level Further Mathematics Core Diagnostic",80,FM.map(x=>({...x})),"Core/compulsory Further Mathematics only; optional applied content is not tested.");
   add("A Level Further Mathematics|Pearson Edexcel|Core Pure","Pearson Edexcel A Level Further Mathematics Core Pure Diagnostic",80,FM.map(x=>({...x})),"Core Pure only; optional Further Pure, Further Statistics, Further Mechanics and Decision modules are not tested.");
-  add("A Level Further Mathematics|OCR A|Core","OCR A Level Further Mathematics A Core Diagnostic",80,FM.map(x=>({...x})),"Core pure content only; optional paper specialisms are not tested.");
+  add("A Level Further Mathematics|OCR A|Pure Core","OCR A Level Further Mathematics A Core Diagnostic",80,FM.map(x=>({...x})),"Core pure content only; optional paper specialisms are not tested.");
 
   // ---------- IB ----------
   add("IB|International Baccalaureate|Mathematics AA SL","IB Mathematics: Analysis and Approaches SL Diagnostic",60,[
@@ -286,7 +335,7 @@ Design rules:
     q("Probability","If \\(X\\sim N(50,4^2)\\), standardised value for \\(X=58\\)?",["2","1.5","8","0.5"],"A",3,4,"Reasoning","Calculator"),
     q("Maclaurin series","First three non-zero terms of \\(e^x\\):",["\\(1+x+\\frac{x^2}{2}\\)","\\(x+\\frac{x^2}{2}+\\frac{x^3}{6}\\)","\\(1+x+x^2\\)","\\(1+\\frac{x^2}{2}+\\frac{x^4}{24}\\)"],"A",4,5,"Multi-step","Non-calculator"),
     q("Complex roots","Roots of \\(z^4=16\\) have modulus:",["2","4","16","\\(\\sqrt2\\)"],"A",4,5,"Reasoning","Non-calculator"),
-    q("Calculus and geometry","For \\(f(x)=x^3-3x\\), the tangent at \\(x=a\\) passes through the origin. Find non-zero \\(a\\).",["\\(\\pm\\sqrt{\\frac32}\\)","\\(\\pm1\\)","\\(\\pm\\sqrt3\\)","\\(\\pm2\\)"],"A",5,5,"Cross-topic","Non-calculator")
+    q("Calculus and geometry","For \\(f(x)=x^3-3x^2\\), the tangent at \\(x=a\\) passes through the origin. Find the non-zero value of \\(a\\).",["\\(a=\\frac32\\)","\\(a=1\\)","\\(a=2\\)","\\(a=3\\)"],"A",5,5,"Cross-topic","Non-calculator")
   ]);
 
   add("IB|International Baccalaureate|Mathematics AI SL","IB Mathematics: Applications and Interpretation SL Diagnostic",60,[
@@ -309,7 +358,7 @@ Design rules:
     q("Graph theory","A Hamiltonian cycle visits:",["every vertex once and returns to start","every edge once","only odd-degree vertices","shortest path only"],"A",1,1,"Fluency","Calculator"),
     q("Statistics","For \\(X\\sim Po(4)\\), what is \\(E(X)\\)?",["4","2","16","\\(e^{-4}\\)"],"A",2,2,"Application","Calculator"),
     q("Matrices","For \\(A=\\begin{pmatrix}2&1\\\\0&3\\end{pmatrix}\\), find \\(\\det A\\).",["6","5","3","2"],"A",2,2,"Application","Calculator"),
-    q("Markov chains","A stochastic transition matrix must have each row or column sum to:",["1","0","100","number of states"],"A",2,3,"Interpretation","Calculator"),
+    q("Markov chains","Using the row-stochastic convention, what must each row of a transition matrix sum to?",["1","0","100","number of states"],"A",2,3,"Interpretation","Calculator"),
     q("Calculus","Differentiate \\(x^2e^x\\).",["\\(e^x(x^2+2x)\\)","\\(2xe^x\\)","\\(x^2e^x\\)","\\(e^x(x+2)\\)"],"A",3,3,"Application","Calculator"),
     q("Hypothesis testing","p-value 0.018 at 5% significance. Decision?",["reject null hypothesis","accept null as true","increase p-value","automatically use 1%"],"A",3,4,"Reasoning","Calculator"),
     q("Graph theory","Connected graph has 8 vertices, each degree 3. Number of edges?",["12","24","8","16"],"A",3,4,"Reasoning","Calculator"),

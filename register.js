@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "AQA": ["Foundation", "Higher"],
       "Pearson Edexcel": ["Foundation", "Higher"],
       "OCR": ["Foundation", "Higher"],
-      "WJEC": ["Foundation", "Higher"]
+      "WJEC Eduqas": ["Foundation", "Higher"]
     },
     IGCSE: {
-      "Pearson Edexcel": ["Foundation", "Higher"],
+      "Pearson Edexcel International GCSE": ["Foundation", "Higher"],
       "Cambridge International": ["Core", "Extended"]
     },
     "AS Mathematics": {
@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "OCR A": ["A Level"]
     },
     "A Level Further Mathematics": {
-      "AQA": ["Core"],
+      "AQA": ["Compulsory Core"],
       "Pearson Edexcel": ["Core Pure"],
-      "OCR A": ["Core"]
+      "OCR A": ["Pure Core"]
     },
     IB: {
       "International Baccalaureate": [
