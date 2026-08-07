@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mathora Daily: a new exam-style mathematics challenge every day for GCSE, IGCSE, IB, AS, A Level and Further Mathematics.">
+<title>Mathora Daily | Question of the Day</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<link rel="stylesheet" href="./style.css?v=8.0">
+<link rel="stylesheet" href="./daily-v8.css?v=8.0">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script src="./daily-bank.js?v=8.0" defer></script>
+<script src="./daily.js?v=8.0" defer></script>
+</head>
+
+<body class="daily-body">
+<header class="daily-header">
+  <div class="daily-container daily-nav">
+    <a class="daily-brand" href="./index.html" aria-label="Mathora home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="18" fill="#172234"/>
+        <path d="M13 46V18l13 18 12-18v28" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 46h13" fill="none" stroke="#6FA7FF" stroke-width="5.5" stroke-linecap="round"/>
+        <circle cx="51" cy="17" r="4" fill="#6FA7FF"/>
+      </svg>
+      <span>MATHORA</span>
+    </a>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./free-assessment.html">Free Assessment</a>
+      <a class="active" href="./daily-question.html">Daily Challenge</a>
+      <a href="./services.html">Services</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="daily-hero">
+  <div class="daily-container daily-hero-grid">
+    <div>
+      <span class="daily-kicker"><i></i> MATHORA DAILY</span>
+      <h1>One question.<br><em>Every day.</em></h1>
+      <p>A fresh exam-style mathematics challenge matched to your level, with a hint, full worked solution, common mistake and examiner-style tip.</p>
+      <div class="daily-mini-stats">
+        <div><strong id="heroStreak">0</strong><span>day streak</span></div>
+        <div><strong>730</strong><span>day rotation</span></div>
+        <div><strong>11</strong><span>pathways</span></div>
+      </div>
+    </div>
+
+    <div class="daily-selector-card">
+      <span>YOUR DAILY PATHWAY</span>
+      <h2>What are you studying?</h2>
+      <p>We’ll remember this choice on this device.</p>
+      <select id="trackSelect" aria-label="Choose mathematics pathway">
+        <option value="gcse-foundation">GCSE Foundation</option>
+        <option value="gcse-higher">GCSE Higher</option>
+        <option value="igcse-core">Cambridge IGCSE Core</option>
+        <option value="igcse-extended">IGCSE Extended / Higher</option>
+        <option value="as-maths">AS Mathematics</option>
+        <option value="a-level">A Level Mathematics</option>
+        <option value="further-maths">A Level Further Mathematics</option>
+        <option value="ib-aa-sl">IB Mathematics AA SL</option>
+        <option value="ib-aa-hl">IB Mathematics AA HL</option>
+        <option value="ib-ai-sl">IB Mathematics AI SL</option>
+        <option value="ib-ai-hl">IB Mathematics AI HL</option>
+      </select>
+      <small id="rememberedText">Your selection is saved automatically.</small>
+    </div>
+  </div>
+</section>
+
+<section class="daily-stage">
+<div class="daily-container">
+  <div class="daily-topline">
+    <div>
+      <span id="dateLabel">TODAY</span>
+      <strong id="trackLabel">GCSE Higher</strong>
+    </div>
+    <div class="daily-tags">
+      <span id="boardLabel">Exam-style</span>
+      <span id="topicLabel">Algebra</span>
+      <span id="difficultyLabel">Difficulty 3/5</span>
+      <span id="timeLabel">3 min</span>
+    </div>
+  </div>
+
+  <article class="challenge-card">
+    <header>
+      <div>
+        <span>QUESTION OF THE DAY</span>
+        <strong id="challengeNumber">Challenge #1</strong>
+      </div>
+      <div class="streak-pill">🔥 <b id="streakCount">0</b> day streak</div>
+    </header>
+
+    <div class="challenge-question">
+      <span class="question-label">QUESTION</span>
+      <h2 id="questionText"></h2>
+      <p id="questionContext"></p>
+    </div>
+
+    <div id="answerArea" class="answer-area">
+      <label for="answerInput">Your answer <span>optional — you can reveal the method without submitting</span></label>
+      <div class="answer-row">
+        <input id="answerInput" autocomplete="off" placeholder="Type your answer">
+        <button id="checkAnswer" type="button">Check answer</button>
+      </div>
+      <div id="answerFeedback" class="answer-feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="challenge-actions">
+      <button id="hintButton" class="daily-action" type="button"><span>01</span><p><strong>Need a hint?</strong><small>Reveal one useful step</small></p><b>+</b></button>
+      <button id="solutionButton" class="daily-action" type="button"><span>02</span><p><strong>Show full solution</strong><small>See a complete worked method</small></p><b>+</b></button>
+    </div>
+
+    <section id="hintPanel" class="reveal-panel">
+      <span>HINT</span>
+      <div id="hintText"></div>
+    </section>
+
+    <section id="solutionPanel" class="solution-panel">
+      <div class="solution-heading">
+        <span>WORKED SOLUTION</span>
+        <strong id="finalAnswer"></strong>
+      </div>
+      <div id="solutionSteps" class="solution-steps"></div>
+
+      <div class="insight-grid">
+        <div class="mistake-box">
+          <span>COMMON MISTAKE</span>
+          <p id="mistakeText"></p>
+        </div>
+        <div class="tip-box">
+          <span>EXAM TIP</span>
+          <p id="tipText"></p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="daily-after">
+    <div>
+      <span>WANT A FULL PICTURE?</span>
+      <h2>One question tests one skill. The free diagnostic checks twelve.</h2>
+      <p>Find the topics and methods that are costing you marks.</p>
+    </div>
+    <a href="./free-assessment.html">Start free diagnostic <span>→</span></a>
+  </div>
+
+  <section class="daily-history">
+    <div class="history-heading">
+      <div><span>KEEP PRACTISING</span><h2>Previous challenges</h2></div>
+      <button id="randomChallenge" type="button">Give me a random challenge</button>
+    </div>
+    <div id="historyGrid" class="history-grid"></div>
+  </section>
+</div>
+</section>
+</main>
+
+<footer class="daily-footer">
+<div class="daily-container">
+  <div><strong>MATHORA DAILY</strong><span>Original mathematics challenges for daily practice.</span></div>
+  <div><a href="./index.html">Mathora</a><a href="./free-assessment.html">Free Assessment</a><a href="./contact.html">Contact</a></div>
+</div>
+</footer>
+</body>
+</html>
