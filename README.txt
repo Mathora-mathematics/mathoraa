@@ -1,39 +1,34 @@
-MATHORA V10 — FREE ASSESSMENT PAGE REFINEMENT
+MATHORA V11 — PARENT-CONVERSION HOMEPAGE
 
 REPLACE ONLY:
-free-assessment.html
+index.html
 
 DO NOT CHANGE:
-- assessment-v6.css
-- typography-v6.css
 - style.css
-- register.html
-- register.js
-- tests.js
-- Supabase files
-- SQL files
+- typography-v6.css
+- home-v6.css
+- assessment files
+- daily files
+- Supabase
+- SQL
 
-IMPROVEMENTS
-- Adds AS Mathematics
-- Adds A Level Mathematics
-- Adds Further Mathematics
-- Updates GCSE naming to WJEC Eduqas
-- Separates Cambridge / Pearson International GCSE wording
-- Adds Daily Challenge navigation
-- Corrects the mathematical preview question
-- Improves hero spacing and prevents title clipping
-- Improves preview card scale and readability
-- Improves mobile responsiveness
-- Adds full course-coverage section
-- Stronger marketing copy
-- More balanced section typography
-- Better visual hierarchy
+This index.html contains its own page-specific design CSS.
 
-IMPORTANT MATHEMATICAL FIX
-The preview sequence 4, 11, 22, 37,... has nth term:
-2n² + n + 1
+WHAT CHANGED
+- Parent-focused hero message
+- Stronger free diagnostic CTA
+- Cleaner live diagnostic visual
+- Immediate qualification coverage
+- Clear explanation of what the diagnostic provides
+- More credible illustrative report section
+- Dedicated services grid
+- GCSE / IGCSE / AS / A Level / Further Maths / IB coverage
+- Mathora Daily section
+- Schools / AI training section lower down
+- Repeated conversion CTA without excessive sales copy
+- Better tablet and mobile layouts
 
-The previous preview did not offer the correct expression.
+No testimonials, pass-rate claims or fabricated statistics have been added.
 
-GITHUB COMMIT:
-Improve free assessment page and advanced course coverage
+GitHub commit:
+Redesign homepage for parent conversion and services
