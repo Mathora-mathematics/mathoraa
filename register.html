@@ -10,17 +10,19 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2307111F'/%3E%3Cpath d='M13 46V18l13 18 12-18v28' fill='none' stroke='white' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M38 46h13' fill='none' stroke='%236FA7FF' stroke-width='5.5' stroke-linecap='round'/%3E%3Ccircle cx='51' cy='17' r='4' fill='%236FA7FF'/%3E%3C/svg%3E" type="image/svg+xml">
 <link rel="stylesheet" href="./style.css?v=6.2">
 <link rel="stylesheet" href="./assessment-v6.css?v=6.2">
-<script src="./register.js?v=4.0" defer></script>
+<script src="./register.js?v=7.0" defer></script>
 </head>
 <body class="app-body">
 <header class="assessment-flow-header">
 <div class="assess-container flow-header-inner">
-<a class="brand" href="./index.html"><svg class="logo-symbol" viewBox="0 0 64 64" role="img" aria-label="Mathora">
+<a class="brand" href="./index.html">
+<svg class="logo-symbol" viewBox="0 0 64 64" role="img" aria-label="Mathora">
 <rect width="64" height="64" rx="18" fill="#172234"/>
 <path d="M13 46V18l13 18 12-18v28" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M38 46h13" fill="none" stroke="#6FA7FF" stroke-width="5.5" stroke-linecap="round"/>
 <circle cx="51" cy="17" r="4" fill="#6FA7FF"/>
-</svg><span class="brand-name">MATHORA</span></a>
+</svg>
+<span class="brand-name">MATHORA</span></a>
 <div class="flow-progress">
 <div class="active"><span>1</span><p>Profile</p></div><i></i>
 <div><span>2</span><p>Instructions</p></div><i></i>
@@ -35,13 +37,11 @@
 <span class="assess-kicker">ASSESSMENT SETUP</span>
 <h1>Match the student to the correct diagnostic.</h1>
 <p>The qualification, exam board and level determine the question set and time limit.</p>
-
 <div class="setup-points">
 <div><span>01</span><p><strong>Student details</strong><small>Identify the submission and contact route</small></p></div>
 <div><span>02</span><p><strong>Course pathway</strong><small>Select the exact qualification and level</small></p></div>
 <div><span>03</span><p><strong>Instructions</strong><small>Review the rules before the timer starts</small></p></div>
 </div>
-
 <div class="setup-note">
 <span>RECOMMENDED</span>
 <strong>Use a laptop or tablet where possible.</strong>
@@ -71,11 +71,20 @@
 <div class="setup-form-section">
 <div class="setup-section-title"><span>02</span><div><strong>Course pathway</strong><small>This controls the questions and time limit</small></div></div>
 <div class="form-grid">
-<label class="field">Qualification *<select id="qualification" name="qualification" required>
-<option value="">Select qualification</option><option value="GCSE">GCSE Mathematics</option><option value="IGCSE">IGCSE Mathematics</option><option value="IB">IB Mathematics</option>
+<label class="field">Qualification *
+<select id="qualification" name="qualification" required>
+<option value="">Select qualification</option>
+<option value="GCSE">GCSE Mathematics</option>
+<option value="IGCSE">IGCSE Mathematics</option>
+<option value="AS Mathematics">AS Mathematics</option>
+<option value="A Level Mathematics">A Level Mathematics</option>
+<option value="A Level Further Mathematics">A Level Further Mathematics</option>
+<option value="IB">IB Mathematics</option>
 </select><small></small></label>
-<label class="field">Exam board *<select id="examBoard" name="examBoard" required><option value="">Select qualification first</option></select><small></small></label>
-<label class="field full">Tier or level *<select id="level" name="level" required><option value="">Select exam board first</option></select><small></small></label>
+<label class="field">Exam board *
+<select id="examBoard" name="examBoard" required><option value="">Select qualification first</option></select><small></small></label>
+<label class="field full">Tier or level *
+<select id="level" name="level" required><option value="">Select exam board first</option></select><small></small></label>
 <label class="field">Current grade<input name="currentGrade" placeholder="Optional"></label>
 <label class="field">Additional notes<input name="notes" placeholder="Optional"></label>
 </div>

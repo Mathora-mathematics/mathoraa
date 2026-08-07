@@ -6,17 +6,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const pathways = {
     GCSE: {
-      "AQA": ["Foundation","Higher"],
-      "Pearson Edexcel": ["Foundation","Higher"],
-      "OCR": ["Foundation","Higher"],
-      "WJEC": ["Foundation","Higher"]
+      "AQA": ["Foundation", "Higher"],
+      "Pearson Edexcel": ["Foundation", "Higher"],
+      "OCR": ["Foundation", "Higher"],
+      "WJEC": ["Foundation", "Higher"]
     },
     IGCSE: {
-      "Pearson Edexcel": ["Foundation","Higher"],
-      "Cambridge International": ["Core","Extended"]
+      "Pearson Edexcel": ["Foundation", "Higher"],
+      "Cambridge International": ["Core", "Extended"]
+    },
+    "AS Mathematics": {
+      "AQA": ["AS"],
+      "Pearson Edexcel": ["AS"],
+      "OCR A": ["AS"]
+    },
+    "A Level Mathematics": {
+      "AQA": ["A Level"],
+      "Pearson Edexcel": ["A Level"],
+      "OCR A": ["A Level"]
+    },
+    "A Level Further Mathematics": {
+      "AQA": ["Core"],
+      "Pearson Edexcel": ["Core Pure"],
+      "OCR A": ["Core"]
     },
     IB: {
-      "International Baccalaureate": ["Mathematics AA SL","Mathematics AA HL","Mathematics AI SL","Mathematics AI HL"]
+      "International Baccalaureate": [
+        "Mathematics AA SL",
+        "Mathematics AA HL",
+        "Mathematics AI SL",
+        "Mathematics AI HL"
+      ]
     }
   };
 
@@ -53,30 +73,33 @@ document.addEventListener("DOMContentLoaded", () => {
       if (error) error.textContent = "Please confirm before continuing.";
       return false;
     }
+
     if (field.required && !String(field.value).trim()) {
       wrapper?.classList.add("invalid");
       if (error) error.textContent = "This field is required.";
       return false;
     }
+
     if (field.type === "email" && !field.checkValidity()) {
       wrapper?.classList.add("invalid");
       if (error) error.textContent = "Enter a valid email address.";
       return false;
     }
+
     return true;
   }
 
   form.addEventListener("submit", event => {
     event.preventDefault();
+
     const required = [...form.querySelectorAll("[required]")];
-    const valid = required.map(validate).every(Boolean);
-    if (!valid) {
+    if (!required.map(validate).every(Boolean)) {
       form.querySelector(".invalid input,.invalid select")?.focus();
       return;
     }
 
     const data = Object.fromEntries(new FormData(form).entries());
-    const key = `${data.qualification}|${data.examBoard}|${data.level}`;
+    const testKey = `${data.qualification}|${data.examBoard}|${data.level}`;
 
     const student = {
       fullName: data.fullName.trim(),
@@ -89,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       qualification: data.qualification,
       examBoard: data.examBoard,
       level: data.level,
-      testKey: key,
+      testKey,
       startedAt: new Date().toISOString()
     };
 
