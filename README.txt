@@ -1,34 +1,26 @@
-MATHORA V11 — PARENT-CONVERSION HOMEPAGE
+MATHORA V12 — INTERACTIVE REPORT HOMEPAGE
 
 REPLACE ONLY:
-index.html
-
-DO NOT CHANGE:
-- style.css
-- typography-v6.css
-- home-v6.css
-- assessment files
-- daily files
-- Supabase
-- SQL
-
-This index.html contains its own page-specific design CSS.
+- index.html
 
 WHAT CHANGED
-- Parent-focused hero message
-- Stronger free diagnostic CTA
-- Cleaner live diagnostic visual
-- Immediate qualification coverage
-- Clear explanation of what the diagnostic provides
-- More credible illustrative report section
-- Dedicated services grid
-- GCSE / IGCSE / AS / A Level / Further Maths / IB coverage
-- Mathora Daily section
-- Schools / AI training section lower down
-- Repeated conversion CTA without excessive sales copy
-- Better tablet and mobile layouts
+- Replaces the static report with a clickable interactive report preview
+- Overview tab
+- Topic analysis tab
+- Method quality tab
+- Timing tab
+- Recommended next-step tab
+- Multiple contextual “Get your report” CTAs linking to free-assessment.html
+- Parent-focused wording explaining the value of the report
+- Responsive mobile tab navigation
+- No database / assessment logic changes
 
-No testimonials, pass-rate claims or fabricated statistics have been added.
+DO NOT CHANGE:
+- CSS files
+- Supabase
+- tests.js
+- assessment pages
+- Daily Challenge files
 
-GitHub commit:
-Redesign homepage for parent conversion and services
+GITHUB COMMIT:
+Make Mathora report interactive and conversion focused

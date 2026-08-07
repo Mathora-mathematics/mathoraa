@@ -27,8 +27,20 @@
 .m-section{padding:92px 0}.m-section.soft{background:var(--m-bg)}.m-heading{max-width:780px}.m-heading.center{margin:0 auto 42px;text-align:center}.m-heading.center .m-eyebrow{justify-content:center}.m-heading h2{margin:12px 0 0;font-family:Manrope,sans-serif;font-size:clamp(38px,4.7vw,62px);line-height:1.04;letter-spacing:-.05em}.m-heading p{margin:18px 0 0;color:var(--m-muted);font-size:15px;line-height:1.75}
 /* parent value */
 .m-value-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}.m-value-list{display:grid;gap:12px}.m-value-item{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:20px;border:1px solid var(--m-line);border-radius:14px;background:#fff}.m-value-item>span{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;background:#eaf1ff;color:var(--m-blue);font-family:"JetBrains Mono";font-size:9px;font-weight:700}.m-value-item h3{margin:1px 0 5px;font-family:Manrope;font-size:16px}.m-value-item p{margin:0;color:var(--m-muted);font-size:11px;line-height:1.6}
-/* report */
-.m-report{padding:28px;border:1px solid var(--m-line);border-radius:19px;background:#fff;box-shadow:0 24px 60px rgba(20,38,62,.08)}.m-report-head{display:flex;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:1px solid var(--m-line);font-size:9px;font-weight:800;letter-spacing:.08em}.m-report-head span:last-child{color:#8190a3}.m-score{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:center;margin-top:21px;padding:22px;border-radius:13px;background:#f6f8fb}.m-score strong{font-family:"JetBrains Mono";font-size:42px}.m-score p{margin:0;color:#5f7086;font-size:12px;line-height:1.65}.m-bars{display:grid;gap:12px;margin-top:23px}.m-bar{display:grid;grid-template-columns:90px 1fr 42px;gap:11px;align-items:center;font-size:9px}.m-bar>div{height:7px;border-radius:999px;background:#e5ebf2}.m-bar i{display:block;height:100%;border-radius:999px;background:var(--m-blue)}.m-bar strong{text-align:right;font-family:"JetBrains Mono";font-size:9px}
+/* interactive report */
+.m-report-showcase{display:grid;grid-template-columns:.72fr 1.28fr;gap:34px;align-items:stretch;margin-top:38px}
+.m-report-intro{padding:34px 8px 34px 0}.m-report-intro h3{margin:13px 0 12px;font-family:Manrope,sans-serif;font-size:30px;line-height:1.08;letter-spacing:-.04em}.m-report-intro p{margin:0;color:var(--m-muted);font-size:13px;line-height:1.72}.m-report-intro .m-report-benefits{display:grid;gap:10px;margin:25px 0 0}.m-report-benefit{display:grid;grid-template-columns:30px 1fr;gap:11px;align-items:start}.m-report-benefit i{width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:#eaf1ff;color:var(--m-blue);font-style:normal;font-size:10px;font-weight:800}.m-report-benefit strong{display:block;font-family:Manrope;font-size:12px}.m-report-benefit span{display:block;margin-top:2px;color:#78879a;font-size:9px;line-height:1.5}
+.m-report-shell{overflow:hidden;border:1px solid var(--m-line);border-radius:22px;background:#fff;box-shadow:0 28px 75px rgba(21,40,65,.11)}.m-report-top{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 23px;border-bottom:1px solid var(--m-line);background:#fbfcfe}.m-report-brand{display:flex;align-items:center;gap:10px}.m-report-brand-mark{width:33px;height:33px;display:grid;place-items:center;border-radius:10px;background:var(--m-navy);color:#fff;font-family:Manrope;font-size:12px;font-weight:800}.m-report-brand div{display:flex;flex-direction:column}.m-report-brand strong{font-size:9px;letter-spacing:.12em}.m-report-brand span{margin-top:2px;color:#8190a3;font-size:7px}.m-report-status{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:999px;background:#eaf8f3;color:#167255;font-size:8px;font-weight:800}.m-report-status i{width:7px;height:7px;border-radius:50%;background:#20a576}
+.m-report-layout{display:grid;grid-template-columns:165px 1fr;min-height:455px}.m-report-tabs{padding:20px 12px;border-right:1px solid var(--m-line);background:#f8fafc}.m-report-tabs span{display:block;padding:0 9px 9px;color:#93a0b1;font-size:7px;font-weight:800;letter-spacing:.12em}.m-report-tab{width:100%;min-height:43px;display:flex;align-items:center;gap:9px;padding:0 11px;border:0;border-radius:10px;background:transparent;color:#6a7a8f;text-align:left;font-size:9px;font-weight:700;cursor:pointer;transition:.18s ease}.m-report-tab i{width:22px;height:22px;display:grid;place-items:center;border-radius:7px;background:#edf1f6;color:#7d8da0;font-style:normal;font-size:8px}.m-report-tab:hover{background:#fff;color:var(--m-ink)}.m-report-tab.active{background:#eaf1ff;color:#245fc7}.m-report-tab.active i{background:#fff;color:var(--m-blue);box-shadow:0 4px 12px rgba(54,120,255,.12)}
+.m-report-content{position:relative;padding:28px 30px 25px}.m-report-panel{display:none;animation:mFade .22s ease}.m-report-panel.active{display:block}@keyframes mFade{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}
+.m-report-label{color:var(--m-blue);font-size:7px;font-weight:800;letter-spacing:.13em}.m-report-title-row{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-top:7px}.m-report-title-row h3{margin:0;font-family:Manrope;font-size:24px;letter-spacing:-.035em}.m-report-title-row small{color:#8290a2;font-size:8px}.m-report-summary{display:grid;grid-template-columns:118px 1fr;gap:17px;align-items:center;margin-top:20px;padding:19px;border-radius:14px;background:linear-gradient(135deg,#f5f8fc,#eef4fb)}.m-report-score{font-family:'JetBrains Mono';font-size:34px;font-weight:600}.m-report-summary p{margin:0;color:#5e6f84;font-size:10px;line-height:1.65}.m-report-summary p strong{color:var(--m-ink)}
+.m-report-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.m-report-metric{padding:13px;border:1px solid var(--m-line);border-radius:11px}.m-report-metric span{display:block;color:#8492a5;font-size:7px}.m-report-metric strong{display:block;margin-top:5px;font-family:'JetBrains Mono';font-size:13px}.m-report-metric em{display:block;margin-top:3px;color:#25966e;font-size:7px;font-style:normal}
+.m-bars{display:grid;gap:13px;margin-top:22px}.m-bar{display:grid;grid-template-columns:92px 1fr 42px;gap:11px;align-items:center;font-size:9px}.m-bar>div{height:7px;border-radius:999px;background:#e6ecf3;overflow:hidden}.m-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#3678ff,#75a9ff);transition:width .45s ease}.m-bar strong{text-align:right;font-family:'JetBrains Mono';font-size:9px}
+.m-skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:19px}.m-skill{padding:15px;border:1px solid var(--m-line);border-radius:12px}.m-skill-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.m-skill-top strong{font-family:Manrope;font-size:11px}.m-skill-top span{padding:5px 7px;border-radius:999px;font-size:7px;font-weight:800}.m-skill.secure .m-skill-top span{background:#eaf8f3;color:#157253}.m-skill.review .m-skill-top span{background:#fff3e3;color:#9a6500}.m-skill.priority .m-skill-top span{background:#fff0f2;color:#b54b5e}.m-skill p{margin:8px 0 0;color:#748397;font-size:8px;line-height:1.55}
+.m-method-list{display:grid;gap:10px;margin-top:19px}.m-method-row{display:grid;grid-template-columns:35px 1fr auto;gap:12px;align-items:center;padding:13px;border:1px solid var(--m-line);border-radius:11px}.m-method-row>span{width:33px;height:33px;display:grid;place-items:center;border-radius:9px;background:#eef4ff;color:var(--m-blue);font-family:'JetBrains Mono';font-size:8px}.m-method-row strong{display:block;font-size:10px}.m-method-row small{display:block;margin-top:3px;color:#7d8b9d;font-size:8px}.m-method-row b{font-size:8px;color:#19805f}.m-method-row b.warn{color:#aa6c00}.m-method-row b.risk{color:#ba4c61}
+.m-timing-chart{display:grid;gap:9px;margin-top:21px}.m-time-row{display:grid;grid-template-columns:30px 1fr 45px;gap:10px;align-items:center;font-size:8px}.m-time-row>span{color:#718196}.m-time-track{height:9px;border-radius:999px;background:#edf1f6;overflow:hidden}.m-time-track i{display:block;height:100%;border-radius:999px;background:#6fa7ff}.m-time-row strong{text-align:right;font-family:'JetBrains Mono';font-size:8px}.m-time-note{margin-top:17px;padding:13px;border-radius:11px;background:#fff6e8;color:#7d5a17;font-size:9px;line-height:1.6}
+.m-next-card{margin-top:19px;padding:20px;border-radius:15px;color:#fff;background:linear-gradient(135deg,#07111f,#0f3964)}.m-next-card span{color:#8fbbff;font-size:7px;font-weight:800;letter-spacing:.12em}.m-next-card h4{margin:8px 0 8px;font-family:Manrope;font-size:19px}.m-next-card p{margin:0;color:#b3c0d0;font-size:9px;line-height:1.65}.m-next-list{display:grid;gap:8px;margin-top:15px}.m-next-list div{display:flex;align-items:center;gap:9px;padding:9px 10px;border:1px solid rgba(255,255,255,.1);border-radius:9px;background:rgba(255,255,255,.04);font-size:8px}.m-next-list i{width:20px;height:20px;display:grid;place-items:center;border-radius:6px;background:rgba(111,167,255,.15);color:#8ebaff;font-style:normal}
+.m-report-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:20px;padding:17px 18px;border-radius:13px;background:#07111f;color:#fff}.m-report-cta div{display:flex;flex-direction:column}.m-report-cta strong{font-family:Manrope;font-size:13px}.m-report-cta span{margin-top:3px;color:#9dacbf;font-size:8px}.m-report-cta a{flex:none;display:inline-flex;align-items:center;gap:11px;padding:9px 10px 9px 13px;border-radius:9px;background:#fff;color:var(--m-navy);font-size:9px;font-weight:800}.m-report-cta a i{width:28px;height:28px;display:grid;place-items:center;border-radius:7px;background:var(--m-blue);color:#fff;font-style:normal}
 /* services */
 .m-services{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.m-service{position:relative;min-height:260px;display:flex;flex-direction:column;padding:25px;border:1px solid var(--m-line);border-radius:16px;background:#fff;transition:.2s ease}.m-service:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(20,38,62,.08)}.m-service .num{color:var(--m-blue);font-family:"JetBrains Mono";font-size:8px;font-weight:700}.m-service h3{margin:35px 0 9px;font-family:Manrope;font-size:20px;line-height:1.25}.m-service p{margin:0;color:var(--m-muted);font-size:11px;line-height:1.65}.m-service a{margin-top:auto;padding-top:24px;font-size:10px;font-weight:800}.m-service.featured{color:#fff;border-color:#12385f;background:linear-gradient(145deg,#07111f,#10365e)}.m-service.featured p{color:#aab8c9}.m-service.featured .num{color:#8eb7ff}
 /* course / process */
@@ -43,6 +55,9 @@
 .m-footer{padding:40px 0 25px;background:#050b14;color:#8d9bad}.m-footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:35px}.m-footer strong{color:#fff;font-size:9px;letter-spacing:.08em}.m-footer a{display:block;margin-top:10px;font-size:9px}.m-footer-brand p{max-width:320px;font-size:9px;line-height:1.6}.m-footer-bottom{display:flex;justify-content:space-between;gap:20px;margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:8px}
 @media(max-width:1050px){.m-hero-grid,.m-value-grid,.m-daily-grid,.m-b2b{grid-template-columns:1fr}.m-live{max-width:760px;margin:auto}.m-insight{right:15px}.m-trust-grid{grid-template-columns:repeat(3,1fr)}.m-services{grid-template-columns:repeat(2,1fr)}.m-course-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:720px){.m-wrap{width:calc(100% - 24px)}.m-hero-grid{padding:55px 0 72px;gap:50px}.m-hero h1{font-size:48px}.m-hero-copy>p{font-size:14px}.m-actions{display:grid;grid-template-columns:1fr}.m-btn{width:100%;justify-content:space-between}.m-live{padding:9px}.m-screen-body{padding:20px 15px}.m-options{grid-template-columns:1fr}.m-insight{position:relative;right:auto;bottom:auto;width:auto;margin:10px 0 0}.m-trust-grid{grid-template-columns:1fr 1fr}.m-section{padding:65px 0}.m-heading h2{font-size:38px}.m-value-grid{gap:35px}.m-score{grid-template-columns:1fr;gap:10px}.m-services{grid-template-columns:1fr}.m-course-grid{grid-template-columns:1fr 1fr}.m-b2b-box{grid-template-columns:1fr}.m-final-card{align-items:stretch;flex-direction:column}.m-footer-grid{grid-template-columns:1fr 1fr}.m-footer-brand{grid-column:1/-1}.m-footer-bottom{flex-direction:column}}
+
+@media(max-width:920px){.m-report-showcase{grid-template-columns:1fr}.m-report-intro{padding-right:0}.m-report-layout{grid-template-columns:1fr}.m-report-tabs{display:flex;gap:6px;overflow-x:auto;border-right:0;border-bottom:1px solid var(--m-line);padding:11px}.m-report-tabs>span{display:none}.m-report-tab{min-width:max-content;width:auto;padding:0 10px}.m-report-content{padding:23px}.m-report-summary{grid-template-columns:95px 1fr}.m-report-score{font-size:29px}}
+@media(max-width:620px){.m-report-showcase{gap:20px}.m-report-intro h3{font-size:25px}.m-report-content{padding:19px 15px}.m-report-title-row{align-items:flex-start;flex-direction:column}.m-report-summary{grid-template-columns:1fr}.m-report-metrics,.m-skill-grid{grid-template-columns:1fr}.m-report-cta{align-items:stretch;flex-direction:column}.m-report-cta a{justify-content:space-between}.m-bar{grid-template-columns:72px 1fr 38px}}
 </style>
 </head>
 <body class="site-body">
@@ -60,7 +75,112 @@
 </div></section>
 <section class="m-trust"><div class="m-wrap m-trust-grid"><div><strong>GCSE</strong><span>AQA · Pearson · OCR · Eduqas</span></div><div><strong>IGCSE</strong><span>Cambridge · Pearson International</span></div><div><strong>AS & A Level</strong><span>AQA · Pearson · OCR A</span></div><div><strong>Further Maths</strong><span>Core / compulsory pathways</span></div><div><strong>IB</strong><span>AA & AI · SL & HL</span></div></div></section>
 <section class="m-section soft"><div class="m-wrap m-value-grid"><div class="m-heading"><div class="m-eyebrow">FOR STUDENTS & PARENTS</div><h2>Know what the student needs before choosing more work.</h2><p>The starting point should not be another generic worksheet. The diagnostic is designed to help identify whether the next priority is knowledge, method, exam technique, timing or more structured support.</p><div class="m-actions"><a class="m-btn primary" style="background:#07111f;color:#fff" href="./free-assessment.html">Open free assessment <span>→</span></a></div></div><div class="m-value-list"><article class="m-value-item"><span>01</span><div><h3>Course-matched questions</h3><p>The pathway changes with the qualification, exam board and level instead of sending everyone the same test.</p></div></article><article class="m-value-item"><span>02</span><div><h3>Answer + method + timing</h3><p>Selected responses are kept alongside handwritten uploads or digital whiteboard working and question timings.</p></div></article><article class="m-value-item"><span>03</span><div><h3>Clearer next steps</h3><p>Use the evidence to decide whether the priority is tutoring, exam review, weekly oversight or focused independent revision.</p></div></article></div></div></section>
-<section class="m-section"><div class="m-wrap"><div class="m-heading center"><div class="m-eyebrow">WHAT THE REVIEW CAN SHOW</div><h2>More useful than a score alone.</h2><p>A diagnostic score is only the beginning. Topic patterns, working quality and timing make the result easier to interpret.</p></div><div class="m-report"><div class="m-report-head"><strong>MATHORA DIAGNOSTIC SNAPSHOT</strong><span>ILLUSTRATIVE REPORT VIEW</span></div><div class="m-score"><strong>8/12</strong><p><b style="color:#101d31">Secure core algebra.</b> Multi-step geometry and probability reasoning should be prioritised before the next full mock paper.</p></div><div class="m-bars"><div class="m-bar"><span>Number</span><div><i style="width:88%"></i></div><strong>88%</strong></div><div class="m-bar"><span>Algebra</span><div><i style="width:82%"></i></div><strong>82%</strong></div><div class="m-bar"><span>Geometry</span><div><i style="width:48%"></i></div><strong>48%</strong></div><div class="m-bar"><span>Probability</span><div><i style="width:56%"></i></div><strong>56%</strong></div></div></div></div></section>
+<section class="m-section" id="report-preview"><div class="m-wrap">
+<div class="m-heading center"><div class="m-eyebrow">YOUR MATHORA REPORT</div><h2>Not just a score. A picture of what to fix next.</h2><p>Click through the example report below to see how Mathora can turn twelve answers, working and timings into something a parent can actually use.</p></div>
+<div class="m-report-showcase">
+  <div class="m-report-intro">
+    <div class="m-eyebrow">INTERACTIVE PREVIEW</div>
+    <h3>See the kind of insight your diagnostic can unlock.</h3>
+    <p>The report is designed to make the result easy to understand: where the student is secure, where marks are being lost, whether the method is reliable, and what should happen next.</p>
+    <div class="m-report-benefits">
+      <div class="m-report-benefit"><i>01</i><div><strong>Topic-by-topic view</strong><span>See strengths and priorities rather than one overall percentage.</span></div></div>
+      <div class="m-report-benefit"><i>02</i><div><strong>Method quality</strong><span>A correct answer can still reveal insecure or inefficient working.</span></div></div>
+      <div class="m-report-benefit"><i>03</i><div><strong>Timing patterns</strong><span>Spot questions where time is being lost even when the mathematics is understood.</span></div></div>
+      <div class="m-report-benefit"><i>04</i><div><strong>Clear next step</strong><span>Turn the evidence into focused revision, review or tutoring priorities.</span></div></div>
+    </div>
+  </div>
+
+  <div class="m-report-shell">
+    <div class="m-report-top">
+      <div class="m-report-brand"><div class="m-report-brand-mark">M</div><div><strong>MATHORA REPORT</strong><span>Illustrative diagnostic preview</span></div></div>
+      <div class="m-report-status"><i></i> REPORT READY</div>
+    </div>
+    <div class="m-report-layout">
+      <aside class="m-report-tabs">
+        <span>EXPLORE REPORT</span>
+        <button class="m-report-tab active" data-report="overview"><i>01</i> Overview</button>
+        <button class="m-report-tab" data-report="topics"><i>02</i> Topic analysis</button>
+        <button class="m-report-tab" data-report="method"><i>03</i> Method quality</button>
+        <button class="m-report-tab" data-report="timing"><i>04</i> Timing</button>
+        <button class="m-report-tab" data-report="next"><i>05</i> Next step</button>
+      </aside>
+
+      <div class="m-report-content">
+        <div class="m-report-panel active" id="report-overview">
+          <div class="m-report-label">DIAGNOSTIC OVERVIEW</div>
+          <div class="m-report-title-row"><h3>Current picture</h3><small>12-question diagnostic</small></div>
+          <div class="m-report-summary"><div class="m-report-score">8/12</div><p><strong>Secure core algebra.</strong> Multi-step geometry and probability reasoning are the clearest priorities. Two correct answers also show working that should be made more reliable.</p></div>
+          <div class="m-report-metrics">
+            <div class="m-report-metric"><span>ACCURACY</span><strong>67%</strong><em>8 correct</em></div>
+            <div class="m-report-metric"><span>AVG. TIME</span><strong>3:18</strong><em>within target</em></div>
+            <div class="m-report-metric"><span>METHOD</span><strong>7/12</strong><em>secure working</em></div>
+          </div>
+          <div class="m-bars">
+            <div class="m-bar"><span>Number</span><div><i style="width:88%"></i></div><strong>88%</strong></div>
+            <div class="m-bar"><span>Algebra</span><div><i style="width:82%"></i></div><strong>82%</strong></div>
+            <div class="m-bar"><span>Geometry</span><div><i style="width:48%"></i></div><strong>48%</strong></div>
+            <div class="m-bar"><span>Probability</span><div><i style="width:56%"></i></div><strong>56%</strong></div>
+          </div>
+        </div>
+
+        <div class="m-report-panel" id="report-topics">
+          <div class="m-report-label">TOPIC ANALYSIS</div>
+          <div class="m-report-title-row"><h3>What is secure — and what is not.</h3><small>Example analysis</small></div>
+          <div class="m-skill-grid">
+            <div class="m-skill secure"><div class="m-skill-top"><strong>Algebraic manipulation</strong><span>SECURE</span></div><p>Accurate expansion, factorisation and substitution across the diagnostic.</p></div>
+            <div class="m-skill secure"><div class="m-skill-top"><strong>Number skills</strong><span>SECURE</span></div><p>Reliable arithmetic and proportional reasoning with efficient methods.</p></div>
+            <div class="m-skill review"><div class="m-skill-top"><strong>Probability reasoning</strong><span>REVIEW</span></div><p>Final answers are mixed; event language and multi-stage reasoning need consolidation.</p></div>
+            <div class="m-skill priority"><div class="m-skill-top"><strong>Multi-step geometry</strong><span>PRIORITY</span></div><p>Difficulty selecting the correct theorem and carrying the solution through accurately.</p></div>
+          </div>
+          <div class="m-report-cta"><div><strong>Want this mapped to your own course?</strong><span>Complete the free course-specific diagnostic.</span></div><a href="./free-assessment.html">Get your report <i>→</i></a></div>
+        </div>
+
+        <div class="m-report-panel" id="report-method">
+          <div class="m-report-label">METHOD QUALITY</div>
+          <div class="m-report-title-row"><h3>The answer does not tell the whole story.</h3><small>Working review</small></div>
+          <div class="m-method-list">
+            <div class="m-method-row"><span>Q04</span><div><strong>Correct answer · secure method</strong><small>Clear algebra with a valid check at the end.</small></div><b>SECURE</b></div>
+            <div class="m-method-row"><span>Q06</span><div><strong>Correct answer · insecure method</strong><small>A sign error is cancelled by a second error later in the solution.</small></div><b class="warn">REVIEW</b></div>
+            <div class="m-method-row"><span>Q09</span><div><strong>Incorrect answer · useful progress</strong><small>The correct theorem is selected, but substitution breaks down.</small></div><b class="warn">REVIEW</b></div>
+            <div class="m-method-row"><span>Q11</span><div><strong>Incorrect answer · misconception</strong><small>The probability rule selected does not match independent events.</small></div><b class="risk">PRIORITY</b></div>
+          </div>
+          <div class="m-report-cta"><div><strong>See what your working reveals.</strong><span>Mathora asks for a method with every diagnostic answer.</span></div><a href="./free-assessment.html">Take assessment <i>→</i></a></div>
+        </div>
+
+        <div class="m-report-panel" id="report-timing">
+          <div class="m-report-label">TIMING PROFILE</div>
+          <div class="m-report-title-row"><h3>Where is exam time disappearing?</h3><small>Example timings</small></div>
+          <div class="m-timing-chart">
+            <div class="m-time-row"><span>Q3</span><div class="m-time-track"><i style="width:36%"></i></div><strong>1:42</strong></div>
+            <div class="m-time-row"><span>Q5</span><div class="m-time-track"><i style="width:49%"></i></div><strong>2:18</strong></div>
+            <div class="m-time-row"><span>Q7</span><div class="m-time-track"><i style="width:64%"></i></div><strong>3:04</strong></div>
+            <div class="m-time-row"><span>Q9</span><div class="m-time-track"><i style="width:92%"></i></div><strong>5:31</strong></div>
+            <div class="m-time-row"><span>Q11</span><div class="m-time-track"><i style="width:80%"></i></div><strong>4:47</strong></div>
+          </div>
+          <div class="m-time-note"><strong>Timing insight:</strong> Geometry questions are taking significantly longer than the rest of the diagnostic. This suggests the issue is not only accuracy, but choosing a method quickly.</div>
+          <div class="m-report-cta"><div><strong>Measure more than right or wrong.</strong><span>Your diagnostic stores question timing too.</span></div><a href="./free-assessment.html">Start free <i>→</i></a></div>
+        </div>
+
+        <div class="m-report-panel" id="report-next">
+          <div class="m-report-label">RECOMMENDED NEXT STEP</div>
+          <div class="m-report-title-row"><h3>Turn the result into a plan.</h3><small>Example recommendation</small></div>
+          <div class="m-next-card">
+            <span>PRIORITY FOR THE NEXT 2–3 WEEKS</span>
+            <h4>Strengthen geometry reasoning before adding more full papers.</h4>
+            <p>The student’s algebra is comparatively secure. The strongest immediate gain is likely to come from targeted multi-step geometry and probability work rather than broad revision.</p>
+            <div class="m-next-list">
+              <div><i>1</i> Review circle and similarity reasoning</div>
+              <div><i>2</i> Practise choosing methods from unfamiliar diagrams</div>
+              <div><i>3</i> Re-test under timed conditions</div>
+            </div>
+          </div>
+          <div class="m-report-cta"><div><strong>Get your own diagnostic picture.</strong><span>Start free. No payment required.</span></div><a href="./free-assessment.html">Get my report <i>→</i></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></section>
 <section class="m-section soft" id="services"><div class="m-wrap"><div class="m-heading center"><div class="m-eyebrow">ACADEMIC SERVICES</div><h2>Support that can continue after the diagnostic.</h2><p>Parents can choose the level of support that fits the immediate need — from one paper to ongoing weekly mathematics oversight.</p></div><div class="m-services"><article class="m-service featured"><span class="num">01 · TUTORING</span><h3>One-to-one mathematics support</h3><p>Focused lessons built around the student’s current course, target and areas of difficulty.</p><a href="./tutoring.html">Explore tutoring →</a></article><article class="m-service"><span class="num">02 · EXAM REVIEW</span><h3>Detailed paper marking</h3><p>Review completed exam work to identify lost marks, recurring errors and priorities for improvement.</p><a href="./exam-review.html">Explore exam review →</a></article><article class="m-service"><span class="num">03 · WEEKLY CHECK</span><h3>Ongoing academic oversight</h3><p>Send relevant schoolwork, tests or revision each week and receive focused feedback and next targets.</p><a href="./weekly-check.html">Explore weekly check →</a></article><article class="m-service"><span class="num">04 · HOMEWORK REVIEW</span><h3>Feedback between lessons</h3><p>Structured review of completed mathematics homework with corrections and guidance on method.</p><a href="./homework-review.html">Explore homework review →</a></article><article class="m-service"><span class="num">05 · MOCK EXAMS</span><h3>Exam-style practice & review</h3><p>Use timed papers and question-level feedback to prepare more deliberately for formal assessments.</p><a href="./mock-exams.html">Explore mock support →</a></article><article class="m-service"><span class="num">06 · CONSULTATION</span><h3>Not sure what support fits?</h3><p>Share the course, current position and target. Mathora can recommend a sensible starting point.</p><a href="./contact.html?service=Free%20Consultation">Book a consultation →</a></article></div></div></section>
 <section class="m-section"><div class="m-wrap"><div class="m-heading"><div class="m-eyebrow">COURSE COVERAGE</div><h2>From Foundation GCSE to advanced post-16 mathematics.</h2><p>Separate pathways help keep the diagnostic and support appropriate to the course rather than just the student’s age.</p></div><div class="m-course-grid"><div class="m-course"><span>01</span><strong>GCSE</strong><small>Foundation & Higher</small></div><div class="m-course"><span>02</span><strong>IGCSE</strong><small>Core · Extended · Foundation · Higher</small></div><div class="m-course"><span>03</span><strong>AS Maths</strong><small>Pure · Statistics · Mechanics</small></div><div class="m-course"><span>04</span><strong>A Level</strong><small>Pure · Statistics · Mechanics</small></div><div class="m-course"><span>05</span><strong>Further Maths</strong><small>Core / compulsory diagnostic</small></div><div class="m-course"><span>06</span><strong>IB Maths</strong><small>AA & AI · SL & HL</small></div></div></div></section>
 <section class="m-section m-daily"><div class="m-wrap m-daily-grid"><div><div class="m-eyebrow">MATHORA DAILY</div><h2>A reason to practise — and come back — every day.</h2><p>Students choose their course once and Mathora remembers it on their device. A fresh exam-style challenge appears each day with a hint, worked solution, common mistake and exam tip.</p><div class="m-actions"><a class="m-btn primary" href="./daily-question.html">Try today’s challenge <span>→</span></a></div><div class="m-daily-pills"><span>Changes daily</span><span>Course remembered</span><span>Worked solution</span><span>Practice streak</span></div></div><div class="m-daily-card"><span>TODAY’S CHALLENGE</span><h3>GCSE Higher · Algebra</h3><div class="m-daily-q"><small>QUESTION</small><p>The line y = 3x + 2 intersects the curve y = x² at x = α and x = β. Find (α − β)².</p></div><div class="m-daily-pills"><span>Hint</span><span>Solution</span><span>Exam tip</span><span>Common mistake</span></div></div></div></section>
@@ -68,4 +188,15 @@
 <section class="m-final"><div class="m-wrap"><div class="m-final-card"><div><div class="m-eyebrow">START WITH EVIDENCE</div><h2>Begin with the free diagnostic, then decide what support is actually needed.</h2><p>No payment is required to start the assessment.</p></div><div class="m-actions"><a class="m-btn primary" href="./free-assessment.html">Start free assessment <span>→</span></a><a class="m-btn ghost" href="./contact.html?service=Free%20Consultation">Contact Mathora</a></div></div></div></section>
 </main>
 <footer class="m-footer"><div class="m-wrap"><div class="m-footer-grid"><div class="m-footer-brand"><a class="brand" href="./index.html"><svg class="logo-symbol" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="#172234"/><path d="M13 46V18l13 18 12-18v28" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 46h13" fill="none" stroke="#6FA7FF" stroke-width="5.5" stroke-linecap="round"/><circle cx="51" cy="17" r="4" fill="#6FA7FF"/></svg><span class="brand-name">MATHORA</span></a><p>Mathematics diagnostics, academic support and professional development.</p></div><div><strong>STUDENTS</strong><a href="./free-assessment.html">Free Assessment</a><a href="./daily-question.html">Daily Challenge</a><a href="./services.html">Academic Services</a></div><div><strong>SCHOOLS</strong><a href="./schools.html">Partnerships</a><a href="./schools.html#ai-training">AI Training</a><a href="./contact.html?service=School%20Partnership">School Enquiry</a></div><div><strong>MATHORA</strong><a href="./contact.html">Contact</a><a href="./privacy.html">Privacy</a></div></div><div class="m-footer-bottom"><span>© 2026 Mathora</span><span>Mathematics, understood properly.</span></div></div></footer>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const tabs=[...document.querySelectorAll('.m-report-tab')];
+  const panels=[...document.querySelectorAll('.m-report-panel')];
+  tabs.forEach(tab=>tab.addEventListener('click',()=>{
+    const name=tab.dataset.report;
+    tabs.forEach(t=>t.classList.toggle('active',t===tab));
+    panels.forEach(p=>p.classList.toggle('active',p.id==='report-'+name));
+  }));
+});
+</script>
 </body></html>
