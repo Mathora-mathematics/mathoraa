@@ -1,24 +1,39 @@
-MATHORA V8 HOMEPAGE — DAILY CHALLENGE LINK
+MATHORA V10 — FREE ASSESSMENT PAGE REFINEMENT
 
 REPLACE ONLY:
-- index.html
+free-assessment.html
 
 DO NOT CHANGE:
-- home-v6.css
+- assessment-v6.css
 - typography-v6.css
 - style.css
-- daily-question.html
-- daily-v8.css
-- daily-bank.js
-- daily.js
-- any Supabase or assessment files
+- register.html
+- register.js
+- tests.js
+- Supabase files
+- SQL files
 
-WHAT THIS ADDS
-- Daily Challenge in the top navigation
-- "Try today's challenge" in the hero
-- Full Mathora Daily homepage section
-- Daily Challenge in the footer
-- Direct links to daily-question.html
+IMPROVEMENTS
+- Adds AS Mathematics
+- Adds A Level Mathematics
+- Adds Further Mathematics
+- Updates GCSE naming to WJEC Eduqas
+- Separates Cambridge / Pearson International GCSE wording
+- Adds Daily Challenge navigation
+- Corrects the mathematical preview question
+- Improves hero spacing and prevents title clipping
+- Improves preview card scale and readability
+- Improves mobile responsiveness
+- Adds full course-coverage section
+- Stronger marketing copy
+- More balanced section typography
+- Better visual hierarchy
+
+IMPORTANT MATHEMATICAL FIX
+The preview sequence 4, 11, 22, 37,... has nth term:
+2n² + n + 1
+
+The previous preview did not offer the correct expression.
 
 GITHUB COMMIT:
-Add Mathora Daily to homepage
+Improve free assessment page and advanced course coverage

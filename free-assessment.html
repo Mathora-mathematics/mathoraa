@@ -3,30 +3,391 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Take a free timed GCSE, IGCSE or IB mathematics diagnostic with working recorded for every question.">
+<meta name="description" content="Take a free timed Mathora mathematics diagnostic for GCSE, IGCSE, AS, A Level, Further Mathematics or IB. Every answer is reviewed alongside the student's working.">
 <title>Free Mathematics Diagnostic | Mathora</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2307111F'/%3E%3Cpath d='M13 46V18l13 18 12-18v28' fill='none' stroke='white' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M38 46h13' fill='none' stroke='%236FA7FF' stroke-width='5.5' stroke-linecap='round'/%3E%3Ccircle cx='51' cy='17' r='4' fill='%236FA7FF'/%3E%3C/svg%3E" type="image/svg+xml">
+
 <link rel="stylesheet" href="./style.css?v=6.2">
 <link rel="stylesheet" href="./assessment-v6.css?v=6.2">
 <link rel="stylesheet" href="./typography-v6.css?v=6.3">
 <script src="./platform.js?v=6.1.1" defer></script>
+
+<style>
+/* MATHORA FREE ASSESSMENT V10 — PAGE-SPECIFIC REFINEMENT */
+.assessment-v6 .assess-landing-hero{
+  padding:72px 0 84px!important;
+  min-height:auto!important;
+  overflow:hidden;
+}
+.assessment-v6 .assess-landing-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,.92fr) minmax(520px,1.08fr)!important;
+  gap:72px!important;
+  align-items:center!important;
+}
+.assessment-v6 .assess-landing-grid>div:first-child{
+  padding:14px 0!important;
+}
+.assessment-v6 .assess-kicker{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:9px!important;
+  margin-bottom:20px!important;
+  letter-spacing:.16em!important;
+}
+.assessment-v6 .assess-kicker:before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#6fa7ff;
+  box-shadow:0 0 0 5px rgba(111,167,255,.12);
+}
+.assessment-v6 .assess-landing-hero h1{
+  max-width:680px!important;
+  margin:0!important;
+  font-size:clamp(48px,5.5vw,80px)!important;
+  line-height:.99!important;
+  letter-spacing:-.055em!important;
+}
+.assessment-v6 .assess-landing-hero h1 em{
+  color:#75a9ff;
+  font-style:normal;
+}
+.assessment-v6 .assess-landing-hero>div>div:first-child>p{
+  max-width:650px!important;
+  margin:26px 0 0!important;
+  font-size:17px!important;
+  line-height:1.75!important;
+}
+.assessment-v6 .assess-actions{
+  margin-top:32px!important;
+}
+.assessment-v6 .assess-badges{
+  margin-top:28px!important;
+  gap:9px!important;
+}
+.assessment-v6 .assess-badges span{
+  padding:8px 11px!important;
+  font-size:10px!important;
+  background:rgba(255,255,255,.035)!important;
+}
+
+.diagnostic-preview{
+  position:relative!important;
+  width:100%!important;
+  max-width:720px!important;
+  margin-left:auto!important;
+  border-radius:22px!important;
+  box-shadow:0 35px 95px rgba(0,0,0,.32)!important;
+}
+.diagnostic-preview:before{
+  content:"";
+  position:absolute;
+  inset:-22px -25px -28px 26px;
+  z-index:-1;
+  border:1px solid rgba(111,167,255,.17);
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(111,167,255,.09),rgba(25,74,126,.2));
+}
+.preview-head{
+  min-height:64px!important;
+  padding:0 24px!important;
+}
+.preview-head strong{
+  font-size:11px!important;
+}
+.preview-body{
+  padding:30px 30px 34px!important;
+}
+.preview-progress{
+  margin-bottom:25px!important;
+}
+.preview-topic{
+  display:inline-flex!important;
+  padding:7px 10px!important;
+  border-radius:999px!important;
+  margin-bottom:16px!important;
+}
+.preview-body h2{
+  margin:0 0 22px!important;
+  font-size:22px!important;
+  line-height:1.45!important;
+  letter-spacing:-.025em!important;
+}
+.preview-options{
+  gap:10px!important;
+}
+.preview-options>div{
+  min-height:62px!important;
+  padding:12px 14px!important;
+}
+.preview-options span{
+  font-size:13px!important;
+}
+.preview-working{
+  margin-top:16px!important;
+  padding:14px 17px!important;
+}
+.preview-insight{
+  right:-48px!important;
+  bottom:-34px!important;
+  width:255px!important;
+  padding:22px!important;
+  border-radius:16px!important;
+  box-shadow:0 22px 55px rgba(0,0,0,.18)!important;
+}
+.preview-insight strong{
+  font-size:16px!important;
+  line-height:1.4!important;
+}
+.preview-insight p{
+  font-size:12px!important;
+  line-height:1.65!important;
+}
+
+.assessment-proof-strip{
+  border-top:1px solid #dce5ef!important;
+  border-bottom:1px solid #dce5ef!important;
+}
+.proof-grid{
+  grid-template-columns:repeat(5,1fr)!important;
+}
+.proof-grid>div{
+  padding:25px 16px!important;
+}
+.proof-grid strong{
+  font-size:15px!important;
+}
+.proof-grid span{
+  max-width:190px;
+  margin:5px auto 0!important;
+  line-height:1.45!important;
+}
+
+.assess-heading.centered{
+  max-width:800px!important;
+  margin-inline:auto!important;
+}
+.assess-heading.centered h2{
+  max-width:760px!important;
+  margin-inline:auto!important;
+}
+.assess-process{
+  gap:14px!important;
+}
+.assess-process article{
+  min-height:260px!important;
+  padding:28px!important;
+  border-radius:16px!important;
+}
+.assess-process article h3{
+  font-size:18px!important;
+}
+.assess-process article p{
+  font-size:12px!important;
+  line-height:1.65!important;
+}
+
+.assess-split{
+  gap:70px!important;
+  align-items:center!important;
+}
+.assess-split>div:first-child h2{
+  max-width:650px!important;
+}
+.assess-list{
+  margin:26px 0 30px!important;
+}
+.assess-list li{
+  margin-bottom:10px!important;
+}
+.difference-card{
+  max-width:520px!important;
+  margin-left:auto!important;
+  padding:34px!important;
+  border-radius:18px!important;
+}
+.difference-card h3{
+  font-size:27px!important;
+  line-height:1.25!important;
+}
+
+.course-coverage{
+  padding:86px 0!important;
+  background:#f7f9fc;
+  border-top:1px solid #e1e8f0;
+  border-bottom:1px solid #e1e8f0;
+}
+.course-coverage-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:70px;
+  align-items:start;
+}
+.course-coverage h2{
+  margin:10px 0 15px;
+  max-width:480px;
+  font-family:Manrope,sans-serif;
+  font-size:clamp(34px,4vw,54px);
+  line-height:1.06;
+  letter-spacing:-.045em;
+}
+.course-coverage p{
+  color:#69788d;
+  font-size:14px;
+  line-height:1.7;
+}
+.coverage-cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.coverage-card{
+  min-height:150px;
+  padding:22px;
+  border:1px solid #dce5ef;
+  border-radius:14px;
+  background:#fff;
+}
+.coverage-card span{
+  color:#3678ff;
+  font-family:"JetBrains Mono",monospace;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+.coverage-card h3{
+  margin:14px 0 6px;
+  font-family:Manrope,sans-serif;
+  font-size:17px;
+}
+.coverage-card p{
+  margin:0;
+  font-size:10px;
+  line-height:1.55;
+}
+
+.assessment-final-cta{
+  padding:68px 0!important;
+}
+.final-card{
+  border-radius:20px!important;
+  padding:42px 46px!important;
+}
+.final-card h2{
+  max-width:720px!important;
+  font-size:34px!important;
+  line-height:1.15!important;
+}
+
+@media(max-width:1050px){
+  .assessment-v6 .assess-landing-grid{
+    grid-template-columns:1fr!important;
+    gap:58px!important;
+  }
+  .diagnostic-preview{
+    max-width:760px!important;
+    margin:0 auto!important;
+  }
+  .preview-insight{
+    right:18px!important;
+  }
+  .proof-grid{
+    grid-template-columns:repeat(3,1fr)!important;
+  }
+  .course-coverage-grid{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:720px){
+  .assessment-v6 .assess-landing-hero{
+    padding:48px 0 62px!important;
+  }
+  .assessment-v6 .assess-landing-hero h1{
+    font-size:46px!important;
+  }
+  .assessment-v6 .assess-landing-hero>div>div:first-child>p{
+    font-size:15px!important;
+  }
+  .assessment-v6 .assess-actions{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+  }
+  .assessment-v6 .assess-actions a{
+    width:100%!important;
+    justify-content:space-between!important;
+  }
+  .diagnostic-preview:before{
+    display:none;
+  }
+  .preview-body{
+    padding:24px 18px 26px!important;
+  }
+  .preview-body h2{
+    font-size:19px!important;
+  }
+  .preview-options{
+    grid-template-columns:1fr!important;
+  }
+  .preview-insight{
+    position:relative!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:auto!important;
+    margin:0 18px 18px!important;
+  }
+  .proof-grid{
+    grid-template-columns:1fr 1fr!important;
+  }
+  .course-coverage{
+    padding:62px 0!important;
+  }
+  .coverage-cards{
+    grid-template-columns:1fr!important;
+  }
+  .assess-split{
+    gap:40px!important;
+  }
+  .difference-card{
+    max-width:none!important;
+  }
+  .final-card{
+    padding:30px 24px!important;
+  }
+  .final-card h2{
+    font-size:28px!important;
+  }
+}
+</style>
 </head>
+
 <body class="site-body">
 <header class="site-header">
 <div class="container navigation">
-<a class="brand" href="./index.html"><svg class="logo-symbol" viewBox="0 0 64 64" role="img" aria-label="Mathora">
+<a class="brand" href="./index.html">
+<svg class="logo-symbol" viewBox="0 0 64 64" role="img" aria-label="Mathora">
 <rect width="64" height="64" rx="18" fill="#172234"/>
 <path d="M13 46V18l13 18 12-18v28" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M38 46h13" fill="none" stroke="#6FA7FF" stroke-width="5.5" stroke-linecap="round"/>
 <circle cx="51" cy="17" r="4" fill="#6FA7FF"/>
-</svg><span class="brand-name">MATHORA</span></a>
-<button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</svg>
+<span class="brand-name">MATHORA</span>
+</a>
+
+<button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+
 <nav class="nav-links">
 <a href="./index.html">Home</a>
 <a class="active" href="./free-assessment.html">Free Assessment</a>
+<a href="./daily-question.html">Daily Challenge</a>
 <a href="./services.html">Academic Services</a>
 <a href="./schools.html">Schools</a>
 <a href="./contact.html">Contact</a>
@@ -36,117 +397,298 @@
 </header>
 
 <main class="assessment-v6">
+
 <section class="assess-landing-hero">
 <div class="assess-container assess-landing-grid">
+
 <div>
-<span class="assess-kicker">FREE COURSE-SPECIFIC DIAGNOSTIC</span>
-<h1>See what the score alone cannot show.</h1>
-<p>Complete a focused, timed mathematics assessment matched to the qualification, exam board and level. Every selected answer must be supported by mathematical working.</p>
+<span class="assess-kicker">FREE COURSE-SPECIFIC MATHEMATICS DIAGNOSTIC</span>
+
+<h1>See where marks are being <em>lost.</em></h1>
+
+<p>
+Complete a focused, timed diagnostic matched to the student’s qualification, exam board and level.
+Mathora records both the selected answer and the mathematical method behind it, helping reveal
+misconceptions that a score alone can miss.
+</p>
+
 <div class="assess-actions">
 <a class="assess-button primary" href="./register.html">Start free assessment <span>→</span></a>
 <a class="assess-button ghost" href="#how-it-works">See how it works</a>
 </div>
+
 <div class="assess-badges">
-<span>No payment</span><span>12 questions</span><span>Working required</span><span>GCSE, IGCSE and IB</span>
+<span>No payment</span>
+<span>12 focused questions</span>
+<span>Working required</span>
+<span>Timed diagnostic</span>
+<span>GCSE → Further Maths → IB</span>
 </div>
 </div>
 
 <div class="diagnostic-preview">
 <div class="preview-head">
 <div><i></i><i></i><i></i></div>
-<strong>Mathematics Diagnostic</strong>
+<strong>Higher Mathematics Diagnostic</strong>
 <span>18:42</span>
 </div>
+
 <div class="preview-body">
-<div class="preview-progress"><span>QUESTION 6 OF 12</span><i><b></b></i></div>
+<div class="preview-progress">
+<span>QUESTION 8 OF 12</span>
+<i><b style="width:66%"></b></i>
+</div>
+
 <span class="preview-topic">Algebraic reasoning</span>
-<h2>A sequence begins \(4, 11, 22, 37, \ldots\). Which expression gives its \(n\)th term?</h2>
+
+<h2>
+A sequence begins \(4, 11, 22, 37, \ldots\).
+Which expression gives its \(n\)th term?
+</h2>
+
 <div class="preview-options">
-<div><b>A</b><span>\(n^2+3\)</span></div>
-<div class="active"><b>B</b><span>\(n^2+2n+1\)</span></div>
-<div><b>C</b><span>\(2n^2+2\)</span></div>
+<div><b>A</b><span>\(n^2+3n\)</span></div>
+<div class="active"><b>B</b><span>\(2n^2+n+1\)</span></div>
+<div><b>C</b><span>\(2n^2+2n\)</span></div>
 <div><b>D</b><span>\(3n+1\)</span></div>
 </div>
-<div class="preview-working"><strong>✓ Working attached</strong><span>Digital whiteboard saved</span></div>
+
+<div class="preview-working">
+<strong>✓ Working attached</strong>
+<span>Digital whiteboard saved</span>
 </div>
-<div class="preview-insight"><span>WHY WORKING MATTERS</span><strong>Correct response, insecure method</strong><p>The method reveals a step that a final answer alone would hide.</p></div>
 </div>
+
+<div class="preview-insight">
+<span>WHY WORKING MATTERS</span>
+<strong>Correct answer, insecure method</strong>
+<p>The selected response is accurate, but the working can reveal an algebraic step that needs review.</p>
+</div>
+</div>
+
 </div>
 </section>
 
 <section class="assessment-proof-strip">
 <div class="assess-container proof-grid">
-<div><strong>GCSE</strong><span>AQA, Pearson, OCR and WJEC</span></div>
-<div><strong>IGCSE</strong><span>Cambridge and Pearson</span></div>
-<div><strong>IB</strong><span>AA and AI, SL and HL</span></div>
-<div><strong>2 methods</strong><span>Upload or digital whiteboard</span></div>
+<div><strong>GCSE</strong><span>AQA, Pearson Edexcel, OCR and WJEC Eduqas</span></div>
+<div><strong>IGCSE</strong><span>Cambridge International and Pearson</span></div>
+<div><strong>AS & A Level</strong><span>AQA, Pearson Edexcel and OCR A</span></div>
+<div><strong>Further Maths</strong><span>Core / compulsory diagnostic pathways</span></div>
+<div><strong>IB</strong><span>AA and AI · SL and HL</span></div>
 </div>
 </section>
 
 <section class="assess-section" id="how-it-works">
 <div class="assess-container">
-<div class="assess-heading centered"><span>HOW IT WORKS</span><h2>A clear route from course selection to evidence.</h2><p>The assessment is designed to be simple for the student while collecting enough information for meaningful review.</p></div>
-<div class="assess-process">
-<article><span>01</span><div class="process-icon">⌁</div><h3>Choose the pathway</h3><p>Select the correct qualification, board and level.</p></article>
-<article><span>02</span><div class="process-icon">◷</div><h3>Complete 12 questions</h3><p>The test progresses from secure foundations to reasoning.</p></article>
-<article><span>03</span><div class="process-icon">✎</div><h3>Show every method</h3><p>Upload paper working or use the built-in whiteboard.</p></article>
-<article><span>04</span><div class="process-icon">↗</div><h3>Submit securely</h3><p>Answers, timing and working are stored together.</p></article>
+
+<div class="assess-heading centered">
+<span>HOW IT WORKS</span>
+<h2>One short diagnostic. Much more useful evidence.</h2>
+<p>
+The experience stays simple for the student while collecting the answer, method and timing needed
+for a meaningful academic review.
+</p>
 </div>
+
+<div class="assess-process">
+<article>
+<span>01</span>
+<div class="process-icon">⌁</div>
+<h3>Choose the exact pathway</h3>
+<p>Select qualification, exam board and tier or level so the correct diagnostic is loaded.</p>
+</article>
+
+<article>
+<span>02</span>
+<div class="process-icon">◷</div>
+<h3>Complete 12 questions</h3>
+<p>The questions move from secure foundations towards more demanding reasoning and synoptic work.</p>
+</article>
+
+<article>
+<span>03</span>
+<div class="process-icon">✎</div>
+<h3>Show the method</h3>
+<p>Upload handwritten working or use Mathora’s built-in digital whiteboard for every question.</p>
+</article>
+
+<article>
+<span>04</span>
+<div class="process-icon">↗</div>
+<h3>Submit for review</h3>
+<p>Answers, timings and working are kept together so the student’s method can be reviewed properly.</p>
+</article>
+</div>
+
+</div>
+</section>
+
+<section class="course-coverage">
+<div class="assess-container course-coverage-grid">
+
+<div>
+<span class="assess-eyebrow">COURSE COVERAGE</span>
+<h2>Built around the mathematics the student is actually studying.</h2>
+<p>
+The diagnostic pathway changes according to qualification and level rather than giving every student
+the same generic test.
+</p>
+</div>
+
+<div class="coverage-cards">
+<article class="coverage-card">
+<span>01 · GCSE</span>
+<h3>Foundation & Higher</h3>
+<p>AQA, Pearson Edexcel, OCR and WJEC Eduqas pathways with increasing tier-appropriate demand.</p>
+</article>
+
+<article class="coverage-card">
+<span>02 · INTERNATIONAL GCSE</span>
+<h3>Core, Extended, Foundation & Higher</h3>
+<p>Cambridge International and Pearson International GCSE pathways kept separate.</p>
+</article>
+
+<article class="coverage-card">
+<span>03 · POST-16</span>
+<h3>AS & A Level Mathematics</h3>
+<p>Pure mathematics, statistics and mechanics sampled at the appropriate stage of the course.</p>
+</article>
+
+<article class="coverage-card">
+<span>04 · ADVANCED</span>
+<h3>Further Mathematics</h3>
+<p>Core / compulsory-content diagnostics so students are not tested on optional modules they do not study.</p>
+</article>
+
+<article class="coverage-card">
+<span>05 · IB</span>
+<h3>AA & AI · SL & HL</h3>
+<p>Separate Analysis & Approaches and Applications & Interpretation pathways at both levels.</p>
+</article>
+
+<article class="coverage-card">
+<span>06 · EVERY PATHWAY</span>
+<h3>Method + answer + timing</h3>
+<p>The diagnostic captures more than a final percentage so the next step can be based on evidence.</p>
+</article>
+</div>
+
 </div>
 </section>
 
 <section class="assess-section white">
 <div class="assess-container assess-split">
+
 <div>
 <span class="assess-eyebrow">BUILT FOR BETTER DECISIONS</span>
-<h2>Useful before tutoring, revision or an important exam.</h2>
-<p>The diagnostic helps students and parents identify whether the priority is missing knowledge, exam technique, mathematical communication or time management.</p>
+<h2>Useful before tutoring, revision, mocks or an important exam.</h2>
+
+<p>
+A student can arrive at a correct answer through a fragile method, or lose marks despite understanding
+the underlying mathematics. Looking at both answer and working helps separate these situations.
+</p>
+
 <ul class="assess-list">
-<li>Students uncertain about their weakest areas</li>
-<li>Parents wanting clearer evidence of current performance</li>
-<li>Students deciding between Foundation and Higher tier</li>
-<li>IB students needing course-specific support</li>
-<li>Students preparing for mock or final examinations</li>
+<li>Identify topic gaps and underlying misconceptions</li>
+<li>Distinguish knowledge gaps from exam-technique issues</li>
+<li>Review whether working is mathematically secure and efficient</li>
+<li>Spot time-management problems across the diagnostic</li>
+<li>Provide a clearer starting point for targeted support</li>
 </ul>
+
 <a class="assess-button dark" href="./register.html">Create assessment profile <span>→</span></a>
 </div>
+
 <div class="difference-card">
 <span>THE MATHORA DIFFERENCE</span>
-<h3>A correct answer does not always mean secure understanding.</h3>
-<p>Mathora records both the selected response and the method behind it. This helps separate secure knowledge from an accidental answer, an inefficient approach or a hidden misconception.</p>
-<div class="difference-row"><b>Answer</b><strong>Correct</strong></div>
-<div class="difference-row"><b>Method</b><strong class="warning">Needs review</strong></div>
-<div class="difference-row"><b>Time</b><strong>03:48</strong></div>
+<h3>A correct response does not always mean secure understanding.</h3>
+<p>
+Mathora records both the selected answer and the method behind it. That makes it easier to distinguish
+secure knowledge from an accidental answer, an inefficient approach or a hidden misconception.
+</p>
+
+<div class="difference-row"><b>Selected answer</b><strong>Correct</strong></div>
+<div class="difference-row"><b>Mathematical method</b><strong class="warning">Needs review</strong></div>
+<div class="difference-row"><b>Time on question</b><strong>03:48</strong></div>
+<div class="difference-row"><b>Topic</b><strong>Algebra</strong></div>
 </div>
+
 </div>
 </section>
 
 <section class="assessment-final-cta">
 <div class="assess-container final-card">
-<div><span>READY TO BEGIN?</span><h2>Choose the correct course and start the diagnostic.</h2><p>The timer begins only after the instruction page.</p></div>
+<div>
+<span>READY TO BEGIN?</span>
+<h2>Choose the correct course and start the free diagnostic.</h2>
+<p>The timer begins only after the student has reviewed the assessment instructions.</p>
+</div>
 <a class="assess-button light" href="./register.html">Start free assessment <span>→</span></a>
 </div>
 </section>
+
 </main>
 
 <footer class="platform-footer">
 <div class="container footer-grid">
-<div class="footer-brand"><a class="brand" href="./index.html"><svg class="logo-symbol" viewBox="0 0 64 64" role="img" aria-label="Mathora">
+
+<div class="footer-brand">
+<a class="brand" href="./index.html">
+<svg class="logo-symbol" viewBox="0 0 64 64" role="img" aria-label="Mathora">
 <rect width="64" height="64" rx="18" fill="#172234"/>
 <path d="M13 46V18l13 18 12-18v28" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M38 46h13" fill="none" stroke="#6FA7FF" stroke-width="5.5" stroke-linecap="round"/>
 <circle cx="51" cy="17" r="4" fill="#6FA7FF"/>
-</svg><span class="brand-name">MATHORA</span></a><p>Mathematics diagnostics, academic support and professional development.</p></div>
-<div><strong>Students</strong><a href="./free-assessment.html">Free Assessment</a><a href="./services.html">Academic Services</a><a href="./contact.html?service=One-to-One%20Tutoring">Tutoring Enquiry</a></div>
-<div><strong>Schools</strong><a href="./schools.html">Partnerships</a><a href="./schools.html#ai-training">AI Training</a><a href="./contact.html?service=School%20Partnership">School Enquiry</a></div>
-<div><strong>Mathora</strong><a href="./contact.html">Contact</a><a href="./privacy.html">Privacy</a></div>
+</svg>
+<span class="brand-name">MATHORA</span>
+</a>
+<p>Mathematics diagnostics, academic support and professional development.</p>
 </div>
-<div class="container footer-bottom"><span>© <span id="year"></span> Mathora</span><span>Mathematics, understood properly</span></div>
+
+<div>
+<strong>Students</strong>
+<a href="./free-assessment.html">Free Assessment</a>
+<a href="./daily-question.html">Daily Challenge</a>
+<a href="./services.html">Academic Services</a>
+<a href="./contact.html?service=One-to-One%20Tutoring">Tutoring Enquiry</a>
+</div>
+
+<div>
+<strong>Schools</strong>
+<a href="./schools.html">Partnerships</a>
+<a href="./schools.html#ai-training">AI Training</a>
+<a href="./contact.html?service=School%20Partnership">School Enquiry</a>
+</div>
+
+<div>
+<strong>Mathora</strong>
+<a href="./contact.html">Contact</a>
+<a href="./privacy.html">Privacy</a>
+</div>
+
+</div>
+
+<div class="container footer-bottom">
+<span>© <span id="year"></span> Mathora</span>
+<span>Mathematics, understood properly</span>
+</div>
 </footer>
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded",()=>{if(window.renderMathInElement)renderMathInElement(document.body,{delimiters:[{left:"\\(",right:"\\)",display:false},{left:"\\[",right:"\\]",display:true}],throwOnError:false});});
+document.addEventListener("DOMContentLoaded",()=>{
+  if(window.renderMathInElement){
+    renderMathInElement(document.body,{
+      delimiters:[
+        {left:"\\(",right:"\\)",display:false},
+        {left:"\\[",right:"\\]",display:true}
+      ],
+      throwOnError:false
+    });
+  }
+});
 </script>
 </body>
 </html>
